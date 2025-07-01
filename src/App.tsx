@@ -1,3 +1,9 @@
 export default function App() {
-  return <></>;
+  return (
+    <main>
+      <form>
+      <h2>Harvest Details</h2>
+      </form>
+    </main>
+  );
 }
