@@ -3,11 +3,17 @@ export default function App() {
     <main>
       <form>
         <h2>Harvest Details</h2>
-        <label htmlFor="fruit"></label>
+        <label htmlFor="fruit">Fruit</label>
         <select id="fruit" aria-expanded="false">
           <option>Apples</option>
           <option>Grapes</option>
         </select>
+        <label htmlFor="date">Harvest Date</label>
+        <input id="date" type="date" />
+        <label htmlFor="weight">Weight (Kg)</label>
+        <input id="weight" type="number" step="0.01" placeholder="0.00" />
+        <label htmlFor="notes">Notes</label>
+        <textarea id="notes" placeholder="Weather, condition of fruit etc." />
       </form>
     </main>
   );

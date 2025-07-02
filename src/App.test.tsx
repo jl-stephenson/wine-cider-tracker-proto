@@ -8,12 +8,14 @@ describe("App", () => {
     expect(
       screen.getByRole("heading", { level: 2, name: /Harvest Details/i }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("combobox")).toBeInTheDocument();
     expect(
-      screen.getByRole("textbox", { name: /Harvest Date/i }),
+      screen.getByRole("combobox", { name: /Fruit/i }),
     ).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /Apples/i })).toBeInTheDocument();
+    expect(screen.getByRole("option", { name: /Grapes/i })).toBeInTheDocument();
+    expect(screen.getByLabelText(/Harvest Date/i)).toBeInTheDocument();
     expect(
-      screen.getByRole("textbox", { name: /Weight/i }),
+      screen.getByRole("spinbutton", { name: /Weight/i }),
     ).toBeInTheDocument();
     expect(screen.getByRole("textbox", { name: /Notes/i })).toBeInTheDocument();
   });
