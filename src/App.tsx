@@ -1,9 +1,14 @@
+import { HarvestForm } from "./components/HarvestForm";
+
+function handleSubmit(event: React.FormEvent) {
+  event.preventDefault();
+  console.log(event.target);
+}
+
 export default function App() {
   return (
     <main>
-      <form>
-      <h2>Harvest Details</h2>
-      </form>
+      <HarvestForm handleSubmit={handleSubmit} />
     </main>
   );
 }
