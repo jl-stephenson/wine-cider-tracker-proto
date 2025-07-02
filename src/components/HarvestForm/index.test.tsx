@@ -21,7 +21,7 @@ it("renders App component", () => {
   expect(screen.getByRole("textbox", { name: /Notes/i })).toBeInTheDocument();
 });
 
-it("calls onSubmit when submit is clicked", async () => {
+it("calls onSubmit with data when submit is clicked", async () => {
   const handleSubmit = vi.fn((event) => {
     event.preventDefault();
     console.log("handleSubmit called!", event);
@@ -32,7 +32,7 @@ it("calls onSubmit when submit is clicked", async () => {
 
   const input = {
     fruit: "grapes",
-    date: "2024-01-01",
+    date: "01/01/2024",
     weight: "1",
     notes: "wet",
   };
@@ -54,4 +54,5 @@ it("calls onSubmit when submit is clicked", async () => {
   fireEvent.submit(screen.getByRole("form"));
 
   expect(handleSubmit).toHaveBeenCalledTimes(1);
+  expect(handleSubmit).toHaveBeenCalledWith(input);
 });
