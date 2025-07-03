@@ -1,13 +1,22 @@
 import { useForm } from "react-hook-form";
-import type { HarvestSchema } from "@/schemas/HarvestForm";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod/v4";
+import { HarvestSchema } from "@/schemas/HarvestForm";
 
+type HarvestSchema = z.infer<typeof HarvestSchema>;
 
 type HarvestFormProps = {
   onSubmit: (data: HarvestSchema) => void;
 };
 
 export function HarvestForm({ onSubmit }: HarvestFormProps) {
-  const { register, handleSubmit } = useForm<HarvestSchema>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(HarvestSchema),
+  });
 
   function submitForm(formData: HarvestSchema) {
     onSubmit(formData);
@@ -29,15 +38,16 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
       <input
         id="date"
         type="date"
-        {...(register("date"))}
+        {...register("date", { valueAsDate: true })}
       />
+      {errors.date?.message && <p>{errors.date?.message}</p>}
       <label htmlFor="weight">Weight (Kg)</label>
       <input
         id="weight"
         type="number"
         step="0.01"
         placeholder="0.00"
-        {...register("weight")}
+        {...register("weight", {valueAsNumber: true})}
       />
       <label htmlFor="notes">Notes</label>
       <textarea
