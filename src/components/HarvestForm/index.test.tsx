@@ -4,9 +4,9 @@ import userEvent from "@testing-library/user-event";
 import { HarvestForm } from "./index";
 
 it("renders App component", () => {
-  const handleSubmit = vi.fn();
+  const mockSubmit = vi.fn();
 
-  render(<HarvestForm onSubmit={handleSubmit} />);
+  render(<HarvestForm onSubmit={mockSubmit} />);
 
   expect(
     screen.getByRole("heading", { level: 2, name: /Harvest Details/i }),

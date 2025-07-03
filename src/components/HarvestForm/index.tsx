@@ -1,20 +1,15 @@
 import { useForm } from "react-hook-form";
+import type { HarvestSchema } from "@/schemas/HarvestForm";
 
-type HarvestInputs = {
-  fruit: string;
-  date: string;
-  weight: string;
-  notes: string;
-};
 
 type HarvestFormProps = {
-  onSubmit: (data: HarvestInputs) => void;
+  onSubmit: (data: HarvestSchema) => void;
 };
 
 export function HarvestForm({ onSubmit }: HarvestFormProps) {
-  const { register, handleSubmit } = useForm<HarvestInputs>();
+  const { register, handleSubmit } = useForm<HarvestSchema>();
 
-  function submitForm(formData: HarvestInputs) {
+  function submitForm(formData: HarvestSchema) {
     onSubmit(formData);
   }
 
