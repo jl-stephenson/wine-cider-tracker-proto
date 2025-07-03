@@ -1,12 +1,10 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod/v4";
-import { HarvestSchema } from "@/schemas/HarvestForm";
+import { HarvestSchema, type Harvest } from "@/schemas/HarvestForm";
 
-type HarvestSchema = z.infer<typeof HarvestSchema>;
 
 type HarvestFormProps = {
-  onSubmit: (data: HarvestSchema) => void;
+  onSubmit: (data: Harvest) => void;
 };
 
 export function HarvestForm({ onSubmit }: HarvestFormProps) {
@@ -18,7 +16,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
     resolver: zodResolver(HarvestSchema),
   });
 
-  function submitForm(formData: HarvestSchema) {
+  function submitForm(formData: Harvest) {
     onSubmit(formData);
   }
 

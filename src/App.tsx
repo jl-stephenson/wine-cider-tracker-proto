@@ -1,6 +1,7 @@
-import { HarvestForm } from "./components/HarvestForm";
+import { HarvestForm } from "@/components/HarvestForm";
+import type { Harvest } from "@/schemas/HarvestForm";
 
-function handleSubmit(data) {
+function handleSubmit(data: Harvest) {
   console.log("Function called!", data);
 }
 

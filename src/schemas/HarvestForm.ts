@@ -8,3 +8,4 @@ export const HarvestSchema = z.object({
 });
 
 
+export type Harvest = z.infer<typeof HarvestSchema>
