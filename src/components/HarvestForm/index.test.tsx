@@ -49,5 +49,9 @@ it("calls onSubmit with data when submit is clicked", async () => {
   await user.click(screen.getByRole("button", { name: /Submit/i }));
 
   expect(mockSubmit).toHaveBeenCalledTimes(1);
-  expect(mockSubmit).toHaveBeenCalledWith(input);
+  expect(mockSubmit).toHaveBeenCalledWith({
+    ...input,
+    weight: Number(input.weight),
+    date: new Date(input.date),
+  });
 });
