@@ -46,6 +46,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
         placeholder="0.00"
         {...register("weight", { valueAsNumber: true })}
       />
+      {errors.weight?.message && <p>{errors.weight?.message}</p>}
       <label htmlFor="notes">Notes</label>
       <textarea
         id="notes"

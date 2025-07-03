@@ -5,7 +5,6 @@ import { HarvestForm } from "./index";
 
 it("renders App component", () => {
   const mockSubmit = vi.fn();
-
   render(<HarvestForm onSubmit={mockSubmit} />);
 
   expect(
@@ -24,7 +23,6 @@ it("renders App component", () => {
 it("calls onSubmit with data when submit is clicked", async () => {
   const mockSubmit = vi.fn();
   const user = userEvent.setup();
-
   render(<HarvestForm onSubmit={mockSubmit} />);
 
   const input = {
@@ -62,7 +60,7 @@ it("doesn't call onSubmit and shows errors on invalid input", async () => {
   render(<HarvestForm onSubmit={mockSubmit} />);
 
   const invalidInput = {
-    date: "wrong",
+    date: "2026-04-01",
     weight: "heavy",
   };
 
@@ -75,7 +73,7 @@ it("doesn't call onSubmit and shows errors on invalid input", async () => {
 
   screen.debug();
 
-  expect(screen.getByText(/please enter a valid date/i)).toBeInTheDocument();
+  expect(screen.getByText(/Harvest date cannot be in future/i)).toBeInTheDocument();
   expect(
     screen.getByText(/Please enter a number up to 2 decimal places/i),
   ).toBeInTheDocument();

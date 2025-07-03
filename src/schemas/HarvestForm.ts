@@ -2,7 +2,7 @@ import * as z from "zod/v4";
 
 export const HarvestSchema = z.object({
   fruit: z.enum(["apples", "grapes"]),
-  date: z.date("Please enter a valid date").max(new Date(), "Harvest cannot be in future"),
+  date: z.date("Please enter a valid date").max(new Date(), "Harvest date cannot be in future"),
   weight: z.number("Please enter a number up to 2 decimal places").positive(),
   notes: z.string().optional(),
 });
