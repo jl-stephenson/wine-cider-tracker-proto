@@ -1,12 +1,11 @@
 import { expect, it, vi } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { HarvestForm } from "./index";
 
 it("renders App component", () => {
-  const handleSubmit = vi.fn();
-
-  render(<HarvestForm handleSubmit={handleSubmit} />);
+  const mockSubmit = vi.fn();
+  render(<HarvestForm onSubmit={mockSubmit} />);
 
   expect(
     screen.getByRole("heading", { level: 2, name: /Harvest Details/i }),
@@ -22,17 +21,13 @@ it("renders App component", () => {
 });
 
 it("calls onSubmit with data when submit is clicked", async () => {
-  const handleSubmit = vi.fn((event) => {
-    event.preventDefault();
-    console.log("handleSubmit called!", event);
-  });
+  const mockSubmit = vi.fn();
   const user = userEvent.setup();
-
-  render(<HarvestForm handleSubmit={handleSubmit} />);
+  render(<HarvestForm onSubmit={mockSubmit} />);
 
   const input = {
     fruit: "grapes",
-    date: "01/01/2024",
+    date: "2024-01-01",
     weight: "1",
     notes: "wet",
   };
@@ -42,17 +37,46 @@ it("calls onSubmit with data when submit is clicked", async () => {
     "grapes",
   );
 
-  const dateInput = screen.getByLabelText(/Harvest Date/i);
-  await user.clear(dateInput);
-  await user.type(dateInput, input.date);
+  await user.type(screen.getByLabelText(/Harvest Date/i), input.date);
   await user.type(
     screen.getByRole("spinbutton", { name: /Weight/i }),
     input.weight,
   );
   await user.type(screen.getByRole("textbox", { name: /Notes/i }), input.notes);
 
-  fireEvent.submit(screen.getByRole("form"));
+  await user.click(screen.getByRole("button", { name: /Submit/i }));
 
-  expect(handleSubmit).toHaveBeenCalledTimes(1);
-  expect(handleSubmit).toHaveBeenCalledWith(input);
+  expect(mockSubmit).toHaveBeenCalledTimes(1);
+  expect(mockSubmit).toHaveBeenCalledWith({
+    ...input,
+    weight: Number(input.weight),
+    date: new Date(input.date),
+  });
+});
+
+it("doesn't call onSubmit and shows errors on invalid input", async () => {
+  const user = userEvent.setup();
+  const mockSubmit = vi.fn();
+  render(<HarvestForm onSubmit={mockSubmit} />);
+
+  const invalidInput = {
+    date: "2026-04-01",
+    weight: "heavy",
+  };
+
+  await user.type(screen.getByLabelText(/Harvest Date/i), invalidInput.date);
+  await user.type(
+    screen.getByRole("spinbutton", { name: /Weight/i }),
+    invalidInput.weight,
+  );
+  await user.click(screen.getByRole("button", { name: /Submit/i }));
+
+  screen.debug();
+
+  expect(screen.getByText(/Harvest date cannot be in future/i)).toBeInTheDocument();
+  expect(
+    screen.getByText(/Please enter a number up to 2 decimal places/i),
+  ).toBeInTheDocument();
+
+  expect(mockSubmit).not.toHaveBeenCalled();
 });
