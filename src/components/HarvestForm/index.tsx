@@ -1,10 +1,9 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { HarvestSchema, type Harvest } from "@/schemas/HarvestForm";
-
+import { HarvestSchema, type HarvestFormData } from "@/schemas/HarvestForm";
 
 type HarvestFormProps = {
-  onSubmit: (data: Harvest) => void;
+  onSubmit: (data: HarvestFormData) => void;
 };
 
 export function HarvestForm({ onSubmit }: HarvestFormProps) {
@@ -16,7 +15,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
     resolver: zodResolver(HarvestSchema),
   });
 
-  function submitForm(formData: Harvest) {
+  function submitForm(formData: HarvestFormData) {
     onSubmit(formData);
   }
 
@@ -45,7 +44,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
         type="number"
         step="0.01"
         placeholder="0.00"
-        {...register("weight", {valueAsNumber: true})}
+        {...register("weight", { valueAsNumber: true })}
       />
       <label htmlFor="notes">Notes</label>
       <textarea
@@ -53,7 +52,6 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
         placeholder="Weather, condition of fruit etc."
         {...register("notes")}
       />
-
       <button type="submit">Submit</button>
     </form>
   );

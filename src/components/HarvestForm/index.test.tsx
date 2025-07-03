@@ -55,3 +55,30 @@ it("calls onSubmit with data when submit is clicked", async () => {
     date: new Date(input.date),
   });
 });
+
+it("doesn't call onSubmit and shows errors on invalid input", async () => {
+  const user = userEvent.setup();
+  const mockSubmit = vi.fn();
+  render(<HarvestForm onSubmit={mockSubmit} />);
+
+  const invalidInput = {
+    date: "wrong",
+    weight: "heavy",
+  };
+
+  await user.type(screen.getByLabelText(/Harvest Date/i), invalidInput.date);
+  await user.type(
+    screen.getByRole("spinbutton", { name: /Weight/i }),
+    invalidInput.weight,
+  );
+  await user.click(screen.getByRole("button", { name: /Submit/i }));
+
+  screen.debug();
+
+  expect(screen.getByText(/please enter a valid date/i)).toBeInTheDocument();
+  expect(
+    screen.getByText(/Please enter a number up to 2 decimal places/i),
+  ).toBeInTheDocument();
+
+  expect(mockSubmit).not.toHaveBeenCalled();
+});
