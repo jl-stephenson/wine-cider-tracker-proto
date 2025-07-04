@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Instrument Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/Instrument_Sans.woff2") format("woff2-variations");
+}
+
+@font-face {
+  font-family: "Karla";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/fonts/Karla.woff2") format("woff2-variations");
+}
