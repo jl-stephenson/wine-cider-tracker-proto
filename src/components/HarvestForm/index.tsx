@@ -33,8 +33,10 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
       </select>
       <label htmlFor="variety">Variety</label>
       <input id="variety" type="text" {...register("variety")} />
+      {errors.variety?.message && <p>{errors.variety?.message}</p>}
       <label htmlFor="location">Location</label>
       <input id="location" type="text" {...register("location")} />
+      {errors.location?.message && <p>{errors.location?.message}</p>}
       <label htmlFor="date">Harvest Date</label>
       <input
         id="date"
