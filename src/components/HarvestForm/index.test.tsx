@@ -44,11 +44,16 @@ it("calls onSubmit with data when submit is clicked", async () => {
         variety: "bramley",
         location: "there",
         varietyNotes: "good",
+        weight: "1",
       },
     ],
     date: "2024-01-01",
-    weight: "1",
     notes: "wet",
+  };
+
+  const outputFruits = {
+    ...input.fruits[0],
+    weight: Number(input.fruits[0].weight),
   };
 
   await user.selectOptions(
@@ -72,7 +77,7 @@ it("calls onSubmit with data when submit is clicked", async () => {
   await user.type(screen.getByLabelText(/Harvest Date/i), input.date);
   await user.type(
     screen.getByRole("spinbutton", { name: /Weight/i }),
-    input.weight,
+    input.fruits[0].weight,
   );
   await user.type(
     screen.getByRole("textbox", { name: /General notes/i }),
@@ -83,9 +88,9 @@ it("calls onSubmit with data when submit is clicked", async () => {
 
   expect(mockSubmit).toHaveBeenCalledTimes(1);
   expect(mockSubmit).toHaveBeenCalledWith({
-    ...input,
-    weight: Number(input.weight),
     date: new Date(input.date),
+    notes: input.notes,
+    fruits: [outputFruits],
   });
 });
 

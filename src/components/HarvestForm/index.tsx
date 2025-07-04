@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { harvestSchema, type HarvestFormData } from "@/schemas/HarvestForm";
 
@@ -11,8 +11,25 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm({
     resolver: zodResolver(harvestSchema),
+    defaultValues: {
+      fruits: [
+        {
+          type: "apples",
+          variety: "",
+          location: "",
+          varietyNotes: "",
+          weight: 0,
+        },
+      ],
+    },
+  });
+
+  const { fields } = useFieldArray({
+    name: "fruits",
+    control,
   });
 
   function submitForm(formData: HarvestFormData) {
@@ -26,17 +43,6 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
       noValidate
     >
       <h2 id="harvest-form-heading">Harvest Details</h2>
-      <label htmlFor="fruit">Fruit</label>
-      <select id="fruit" {...register("fruit")}>
-        <option value="apples">Apples</option>
-        <option value="grapes">Grapes</option>
-      </select>
-      <label htmlFor="variety">Variety</label>
-      <input id="variety" type="text" {...register("variety")} />
-      {errors.variety?.message && <p>{errors.variety?.message}</p>}
-      <label htmlFor="location">Location</label>
-      <input id="location" type="text" {...register("location")} />
-      {errors.location?.message && <p>{errors.location?.message}</p>}
       <label htmlFor="date">Harvest Date</label>
       <input
         id="date"
@@ -44,27 +50,58 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
         {...register("date", { valueAsDate: true })}
       />
       {errors.date?.message && <p>{errors.date?.message}</p>}
-      <label htmlFor="variety-notes">Notes on variety</label>
-      <textarea
-        id="variety-notes"
-        placeholder="Weather, condition of fruit etc."
-        {...register("varietyNotes")}
-      />
-      <label htmlFor="weight">Weight (Kg)</label>
-      <input
-        id="weight"
-        type="number"
-        step="0.01"
-        placeholder="0.00"
-        {...register("weight", { valueAsNumber: true })}
-      />
-      {errors.weight?.message && <p>{errors.weight?.message}</p>}
       <label htmlFor="notes">General notes</label>
       <textarea
         id="notes"
         placeholder="Weather, condition of fruit etc."
         {...register("notes")}
       />
+
+      {fields.map((fruits, index) => (
+        <div key={fruits.id}>
+          <label htmlFor="type">Fruit</label>
+          <select id="type" {...register(`fruits.${index}.type`)}>
+            <option value="apples">Apples</option>
+            <option value="grapes">Grapes</option>
+          </select>
+          <label htmlFor="variety">Variety</label>
+          <input
+            id="variety"
+            type="text"
+            {...register(`fruits.${index}.variety`)}
+          />
+          {errors.fruits?.[index]?.variety?.message && (
+            <p>{errors?.fruits?.[index].variety?.message}</p>
+          )}
+          <label htmlFor="location">Location</label>
+          <input
+            id="location"
+            type="text"
+            {...register(`fruits.${index}.location`)}
+          />
+          {errors.fruits?.[index]?.location?.message && (
+            <p>{errors.fruits?.[index]?.location?.message}</p>
+          )}
+          <label htmlFor="variety-notes">Notes on variety</label>
+          <textarea
+            id="variety-notes"
+            placeholder="Weather, condition of fruit etc."
+            {...register(`fruits.${index}.varietyNotes`)}
+          />
+          <label htmlFor="weight">Weight (Kg)</label>
+          <input
+            id="weight"
+            type="number"
+            step="0.01"
+            placeholder="0.00"
+            {...register(`fruits.${index}.weight`, { valueAsNumber: true })}
+          />
+          {errors.fruits?.[index]?.weight?.message && (
+            <p>{errors.fruits?.[index]?.weight?.message}</p>
+          )}
+        </div>
+      ))}
+
       <button type="submit">Submit</button>
     </form>
   );
