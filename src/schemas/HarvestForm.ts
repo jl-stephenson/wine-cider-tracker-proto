@@ -5,7 +5,13 @@ const fruitSchema = z.object({
   variety: z.string().trim().min(1, "Variety required"),
   location: z.string().trim().min(1, "Location required"),
   varietyNotes: z.string().optional(),
-   weight: z.number("Please enter a number up to 2 decimal places").positive(),
+  weight: z
+    .number("Please enter a valid number")
+    .positive("Weight must be positive")
+    .refine(
+      (value) => Number.isInteger(value * 100),
+      "Valid numbers up to 2 decimal places",
+    ),
 });
 
 export const harvestSchema = z.object({
@@ -13,7 +19,7 @@ export const harvestSchema = z.object({
   date: z
     .date("Please enter a valid date")
     .max(new Date(), "Harvest date cannot be in future"),
- 
+
   notes: z.string().optional(),
 });
 

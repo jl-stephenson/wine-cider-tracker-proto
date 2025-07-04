@@ -67,7 +67,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
             {...register(`fruits.${index}.variety`)}
           />
           {errors.fruits?.[index]?.variety?.message && (
-            <p>{errors?.fruits?.[index].variety?.message}</p>
+            <p>{errors.fruits?.[index]?.variety?.message}</p>
           )}
           <label htmlFor="location">Location</label>
           <input
