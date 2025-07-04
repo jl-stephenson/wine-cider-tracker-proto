@@ -101,8 +101,8 @@ it("doesn't call onSubmit and shows errors on invalid input", async () => {
   );
   await user.click(screen.getByRole("button", { name: /Submit/i }));
 
-  screen.debug();
-
+  expect(screen.getByText(/Variety required/i)).toBeInTheDocument();
+  expect(screen.getByText(/Location required/i)).toBeInTheDocument();
   expect(
     screen.getByText(/Harvest date cannot be in future/i),
   ).toBeInTheDocument();
