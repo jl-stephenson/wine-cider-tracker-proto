@@ -27,7 +27,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
     },
   });
 
-  const { fields } = useFieldArray({
+  const { append, fields, remove } = useFieldArray({
     name: "fruits",
     control,
   });
@@ -53,7 +53,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
       <label htmlFor="notes">General notes</label>
       <textarea
         id="notes"
-        placeholder="Weather, condition of fruit etc."
+        placeholder="Weather etc."
         {...register("notes")}
       />
 
@@ -85,7 +85,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
           <label htmlFor="variety-notes">Notes on variety</label>
           <textarea
             id="variety-notes"
-            placeholder="Weather, condition of fruit etc."
+            placeholder="Condition of fruit etc."
             {...register(`fruits.${index}.varietyNotes`)}
           />
           <label htmlFor="weight">Weight (Kg)</label>
@@ -99,8 +99,23 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
           {errors.fruits?.[index]?.weight?.message && (
             <p>{errors.fruits?.[index]?.weight?.message}</p>
           )}
+          {index !== 0 && <button onClick={() => remove(index)}>Delete</button>}
         </div>
       ))}
+
+      <button
+        onClick={() =>
+          append({
+            type: "apples",
+            variety: "",
+            location: "",
+            varietyNotes: "",
+            weight: 0,
+          })
+        }
+      >
+        Add Fruit
+      </button>
 
       <button type="submit">Submit</button>
     </form>
