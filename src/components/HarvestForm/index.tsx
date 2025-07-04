@@ -55,38 +55,38 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
 
       {fields.map((fruits, index) => (
         <div key={fruits.id}>
-          <label htmlFor="type">Fruit</label>
-          <select id="type" {...register(`fruits.${index}.type`)}>
+          <label htmlFor={`type-${index}`}>Fruit</label>
+          <select id={`type-${index}`} {...register(`fruits.${index}.type`)}>
             <option value="apples">Apples</option>
             <option value="grapes">Grapes</option>
           </select>
-          <label htmlFor="variety">Variety</label>
+          <label htmlFor={`variety-${index}`}>Variety</label>
           <input
-            id="variety"
+            id={`variety-${index}`}
             type="text"
             {...register(`fruits.${index}.variety`)}
           />
           {errors.fruits?.[index]?.variety?.message && (
             <p>{errors.fruits?.[index]?.variety?.message}</p>
           )}
-          <label htmlFor="location">Location</label>
+          <label htmlFor={`location-${index}`}>Location</label>
           <input
-            id="location"
+            id={`location-${index}`}
             type="text"
             {...register(`fruits.${index}.location`)}
           />
           {errors.fruits?.[index]?.location?.message && (
             <p>{errors.fruits?.[index]?.location?.message}</p>
           )}
-          <label htmlFor="variety-notes">Notes on variety</label>
+          <label htmlFor={`variety-notes-${index}`}>Notes on variety</label>
           <textarea
-            id="variety-notes"
+            id={`variety-notes-${index}`}
             placeholder="Condition of fruit etc."
             {...register(`fruits.${index}.varietyNotes`)}
           />
-          <label htmlFor="weight">Weight (Kg)</label>
+          <label htmlFor={`weight-${index}`}>Weight (Kg)</label>
           <input
-            id="weight"
+            id={`weight-${index}`}
             type="number"
             step="0.01"
             placeholder="0.00"
