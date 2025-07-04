@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { HarvestSchema, type HarvestFormData } from "@/schemas/HarvestForm";
+import { harvestSchema, type HarvestFormData } from "@/schemas/HarvestForm";
 
 type HarvestFormProps = {
   onSubmit: (data: HarvestFormData) => void;
@@ -12,7 +12,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(HarvestSchema),
+    resolver: zodResolver(harvestSchema),
   });
 
   function submitForm(formData: HarvestFormData) {
