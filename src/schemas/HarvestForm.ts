@@ -4,7 +4,7 @@ const fruitSchema = z.object({
   type: z.enum(["apples", "grapes"]),
   variety: z.string().trim().min(1, "Variety required"),
   location: z.string().trim().min(1, "Location required"),
-  varietyNotes: z.string().optional(),
+  varietyNotes: z.string().trim().optional(),
   weight: z
     .number("Please enter a valid number")
     .positive("Weight must be positive")
@@ -20,7 +20,7 @@ export const harvestSchema = z.object({
     .date("Please enter a valid date")
     .max(new Date(), "Harvest date cannot be in future"),
 
-  notes: z.string().optional(),
+  notes: z.string().trim().optional(),
 });
 
 export type HarvestFormData = z.infer<typeof harvestSchema>;
