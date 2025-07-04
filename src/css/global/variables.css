@@ -1,0 +1,52 @@
+:root {
+  /* colors */
+  --color-dark: #161925;
+  --color-dark-glare: #22273a;
+  --color-dark-shade: #0e1017;
+  --color-light: #edece4;
+  --color-light-glare: #f4f3ef;
+  --color-light-shade: #b4b3ad;
+  --color-primary-glare: #22aaa1;
+  --color-primary: #298a83;
+  --color-primary-shade: #1f6d67;
+  --color-secondary: #d86764;
+  --color-secondary-glare: #f67672;
+  --color-secondary-shade: #bc5b58;
+  --color-fermenting: #0c7c59;
+  --color-empty: #087ca7;
+  --color-ready: #d64933;
+  --color-aging: #f17f29;
+
+  /* fonts */
+  --font-base: "Karla", sans-serif;
+  --font-heading: "Instrument Sans", sans-serif;
+
+  /* text leading */
+  --leading-fine: 1.2;
+  --leading-standard: 1.4;
+
+  /* font sizes */
+  --step--1: clamp(0.8889rem, 0.8784rem + 0.0526vw, 0.9375rem);
+  --step-0: clamp(1rem, 0.973rem + 0.1351vw, 1.125rem);
+  --step-1: clamp(1.125rem, 1.0764rem + 0.2432vw, 1.35rem);
+  --step-2: clamp(1.2656rem, 1.189rem + 0.3831vw, 1.62rem);
+  --step-3: clamp(1.4238rem, 1.3114rem + 0.5623vw, 1.944rem);
+  --step-4: clamp(1.6018rem, 1.4438rem + 0.7903vw, 2.3328rem);
+  --step-5: clamp(1.802rem, 1.5864rem + 1.0782vw, 2.7994rem);
+  --step-6: clamp(2.0273rem, 1.7393rem + 1.4399vw, 3.3592rem);
+  --step-7: clamp(2.2807rem, 1.9022rem + 1.8923vw, 4.0311rem);
+  --step-8: clamp(2.5658rem, 2.0746rem + 2.4557vw, 4.8373rem);
+  --step-9: clamp(2.8865rem, 2.2555rem + 3.1549vw, 5.8048rem);
+  --step-10: clamp(3.2473rem, 2.4433rem + 4.0199vw, 6.9657rem);
+
+  /* font weights */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-bold: 700;
+
+  /* borders */
+  --stroke: 1px solid var(--color-dark);
+  --radius-s: 0.2rem;
+  --radius-m: 0.75rem;
+  --radius-l: 2.5rem;
+}

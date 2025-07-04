@@ -49,7 +49,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
         type="date"
         {...register("date", { valueAsDate: true })}
       />
-      {errors.date?.message && <p>{errors.date?.message}</p>}
+      {errors.date?.message && <p><small>{errors.date?.message}</small></p>}
       <label htmlFor="notes">General notes</label>
       <textarea id="notes" placeholder="Weather etc." {...register("notes")} />
 
@@ -67,7 +67,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
             {...register(`fruits.${index}.variety`)}
           />
           {errors.fruits?.[index]?.variety?.message && (
-            <p>{errors.fruits?.[index]?.variety?.message}</p>
+            <p><small>{errors.fruits?.[index]?.variety?.message}</small></p>
           )}
           <label htmlFor={`location-${index}`}>Location</label>
           <input
@@ -76,7 +76,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
             {...register(`fruits.${index}.location`)}
           />
           {errors.fruits?.[index]?.location?.message && (
-            <p>{errors.fruits?.[index]?.location?.message}</p>
+            <p><small>{errors.fruits?.[index]?.location?.message}</small></p>
           )}
           <label htmlFor={`variety-notes-${index}`}>Notes on variety</label>
           <textarea
@@ -93,7 +93,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
             {...register(`fruits.${index}.weight`, { valueAsNumber: true })}
           />
           {errors.fruits?.[index]?.weight?.message && (
-            <p>{errors.fruits?.[index]?.weight?.message}</p>
+            <p><small>{errors.fruits?.[index]?.weight?.message}</small></p>
           )}
           {index !== 0 && (
             <button type="button" onClick={() => remove(index)}>
