@@ -13,6 +13,11 @@ it("renders App component", () => {
   expect(screen.getByRole("combobox", { name: /Fruit/i })).toBeInTheDocument();
   expect(screen.getByRole("option", { name: /Apples/i })).toBeInTheDocument();
   expect(screen.getByRole("option", { name: /Grapes/i })).toBeInTheDocument();
+  expect(screen.getByRole("textbox", { name: /Variety/i })).toBeInTheDocument();
+  expect(
+    screen.getByRole("textbox", { name: /Location/i }),
+  ).toBeInTheDocument();
+  expect(screen.getByRole("textbox", { name: /Notes/i })).toBeInTheDocument();
   expect(screen.getByLabelText(/Harvest Date/i)).toBeInTheDocument();
   expect(
     screen.getByRole("spinbutton", { name: /Weight/i }),
@@ -73,7 +78,9 @@ it("doesn't call onSubmit and shows errors on invalid input", async () => {
 
   screen.debug();
 
-  expect(screen.getByText(/Harvest date cannot be in future/i)).toBeInTheDocument();
+  expect(
+    screen.getByText(/Harvest date cannot be in future/i),
+  ).toBeInTheDocument();
   expect(
     screen.getByText(/Please enter a number up to 2 decimal places/i),
   ).toBeInTheDocument();
