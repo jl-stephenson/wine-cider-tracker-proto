@@ -19,7 +19,7 @@
   --color-aging: #f17f29;
   --color-error: var(--color-ready);
   --color-success: var(--color-fermenting);
-  --color-waring: var(--color-aging);
+  --color-warning: var(--color-aging);
 
   /* fonts */
   --font-base: "Karla", sans-serif;

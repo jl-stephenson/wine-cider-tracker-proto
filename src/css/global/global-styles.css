@@ -76,7 +76,7 @@ form > * + * {
 
 label {
     line-height: var(--leading-fine);
-    font-weight: var(--fonr-medium);
+    font-weight: var(--font-medium);
 }
 
 label::after {
@@ -100,7 +100,7 @@ label:has(input) input {
 
 
 input:disabled {
-  background: var(--color-mid);
+  background: var(--color-light-shade);
 }
 
 input:disabled,
