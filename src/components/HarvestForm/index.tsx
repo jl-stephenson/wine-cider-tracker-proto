@@ -51,11 +51,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
       />
       {errors.date?.message && <p>{errors.date?.message}</p>}
       <label htmlFor="notes">General notes</label>
-      <textarea
-        id="notes"
-        placeholder="Weather etc."
-        {...register("notes")}
-      />
+      <textarea id="notes" placeholder="Weather etc." {...register("notes")} />
 
       {fields.map((fruits, index) => (
         <div key={fruits.id}>
@@ -99,11 +95,16 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
           {errors.fruits?.[index]?.weight?.message && (
             <p>{errors.fruits?.[index]?.weight?.message}</p>
           )}
-          {index !== 0 && <button onClick={() => remove(index)}>Delete</button>}
+          {index !== 0 && (
+            <button type="button" onClick={() => remove(index)}>
+              Delete
+            </button>
+          )}
         </div>
       ))}
 
       <button
+        type="button"
         onClick={() =>
           append({
             type: "apples",

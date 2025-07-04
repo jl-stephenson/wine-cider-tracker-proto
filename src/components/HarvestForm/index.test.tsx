@@ -10,6 +10,14 @@ it("renders App component", () => {
   expect(
     screen.getByRole("heading", { level: 2, name: /Harvest Details/i }),
   ).toBeInTheDocument();
+
+  // General fields
+  expect(screen.getByLabelText(/Harvest Date/i)).toBeInTheDocument();
+  expect(
+    screen.getByRole("textbox", { name: /General notes/i }),
+  ).toBeInTheDocument();
+
+  // Fruit fields
   expect(screen.getByRole("combobox", { name: /Fruit/i })).toBeInTheDocument();
   expect(screen.getAllByRole("option")).toHaveLength(2);
   expect(screen.getByRole("option", { name: /Apples/i })).toBeInTheDocument();
@@ -23,14 +31,15 @@ it("renders App component", () => {
   expect(
     screen.getByRole("textbox", { name: /Notes on variety/i }),
   ).toBeInTheDocument();
-  expect(screen.getByLabelText(/Harvest Date/i)).toBeInTheDocument();
+
   expect(
     screen.getByRole("spinbutton", { name: /Weight/i }),
   ).toBeInTheDocument();
+
+  // Buttons
   expect(
-    screen.getByRole("textbox", { name: /General notes/i }),
+    screen.getByRole("button", { name: /Add Fruit/i }),
   ).toBeInTheDocument();
-  expect(screen.getByRole("button", { name: /Add Fruit/i })).toBeInTheDocument();
   expect(screen.getByRole("button", { name: /Submit/i })).toBeInTheDocument();
 });
 
@@ -40,6 +49,8 @@ it("calls onSubmit with data when submit is clicked", async () => {
   render(<HarvestForm onSubmit={mockSubmit} />);
 
   const input = {
+    date: "2024-01-01",
+    notes: "wet",
     fruits: [
       {
         type: "apples",
@@ -49,8 +60,6 @@ it("calls onSubmit with data when submit is clicked", async () => {
         weight: "1",
       },
     ],
-    date: "2024-01-01",
-    notes: "wet",
   };
 
   const outputFruits = {
@@ -58,6 +67,14 @@ it("calls onSubmit with data when submit is clicked", async () => {
     weight: Number(input.fruits[0].weight),
   };
 
+  // General fields
+  await user.type(screen.getByLabelText(/Harvest Date/i), input.date);
+  await user.type(
+    screen.getByRole("textbox", { name: /General notes/i }),
+    input.notes,
+  );
+
+  // Fruit fields
   await user.selectOptions(
     screen.getByRole("combobox", { name: /Fruit/i }),
     input.fruits[0].type,
@@ -70,20 +87,13 @@ it("calls onSubmit with data when submit is clicked", async () => {
     screen.getByRole("textbox", { name: /Location/i }),
     input.fruits[0].location,
   );
-
   await user.type(
     screen.getByRole("textbox", { name: /Notes on variety/i }),
     input.fruits[0].varietyNotes,
   );
-
-  await user.type(screen.getByLabelText(/Harvest Date/i), input.date);
   await user.type(
     screen.getByRole("spinbutton", { name: /Weight/i }),
     input.fruits[0].weight,
-  );
-  await user.type(
-    screen.getByRole("textbox", { name: /General notes/i }),
-    input.notes,
   );
 
   await user.click(screen.getByRole("button", { name: /Submit/i }));
