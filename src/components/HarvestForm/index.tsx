@@ -31,6 +31,10 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
         <option value="apples">Apples</option>
         <option value="grapes">Grapes</option>
       </select>
+      <label htmlFor="variety">Variety</label>
+      <input id="variety" type="text" {...register("variety")} />
+      <label htmlFor="location">Location</label>
+      <input id="location" type="text" {...register("location")} />
       <label htmlFor="date">Harvest Date</label>
       <input
         id="date"
@@ -38,6 +42,12 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
         {...register("date", { valueAsDate: true })}
       />
       {errors.date?.message && <p>{errors.date?.message}</p>}
+      <label htmlFor="variety-notes">Notes on variety</label>
+      <textarea
+        id="variety-notes"
+        placeholder="Weather, condition of fruit etc."
+        {...register("varietyNotes")}
+      />
       <label htmlFor="weight">Weight (Kg)</label>
       <input
         id="weight"
@@ -47,7 +57,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
         {...register("weight", { valueAsNumber: true })}
       />
       {errors.weight?.message && <p>{errors.weight?.message}</p>}
-      <label htmlFor="notes">Notes</label>
+      <label htmlFor="notes">General notes</label>
       <textarea
         id="notes"
         placeholder="Weather, condition of fruit etc."

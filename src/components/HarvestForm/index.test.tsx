@@ -13,16 +13,22 @@ it("renders App component", () => {
   expect(screen.getByRole("combobox", { name: /Fruit/i })).toBeInTheDocument();
   expect(screen.getByRole("option", { name: /Apples/i })).toBeInTheDocument();
   expect(screen.getByRole("option", { name: /Grapes/i })).toBeInTheDocument();
-  expect(screen.getByRole("textbox", { name: /Variety/i })).toBeInTheDocument();
+  expect(
+    screen.getByRole("textbox", { name: /^Variety$/i }),
+  ).toBeInTheDocument();
   expect(
     screen.getByRole("textbox", { name: /Location/i }),
   ).toBeInTheDocument();
-  expect(screen.getByRole("textbox", { name: /Notes/i })).toBeInTheDocument();
+  expect(
+    screen.getByRole("textbox", { name: /Notes on variety/i }),
+  ).toBeInTheDocument();
   expect(screen.getByLabelText(/Harvest Date/i)).toBeInTheDocument();
   expect(
     screen.getByRole("spinbutton", { name: /Weight/i }),
   ).toBeInTheDocument();
-  expect(screen.getByRole("textbox", { name: /Notes/i })).toBeInTheDocument();
+  expect(
+    screen.getByRole("textbox", { name: /General notes/i }),
+  ).toBeInTheDocument();
 });
 
 it("calls onSubmit with data when submit is clicked", async () => {
@@ -32,6 +38,9 @@ it("calls onSubmit with data when submit is clicked", async () => {
 
   const input = {
     fruit: "grapes",
+    variety: "bramley",
+    location: "there",
+    varietyNotes: "good",
     date: "2024-01-01",
     weight: "1",
     notes: "wet",
@@ -41,13 +50,29 @@ it("calls onSubmit with data when submit is clicked", async () => {
     screen.getByRole("combobox", { name: /Fruit/i }),
     "grapes",
   );
+  await user.type(
+    screen.getByRole("textbox", { name: /^Variety$/i }),
+    input.variety,
+  );
+  await user.type(
+    screen.getByRole("textbox", { name: /Location/i }),
+    input.location,
+  );
+
+  await user.type(
+    screen.getByRole("textbox", { name: /Notes on variety/i }),
+    input.varietyNotes,
+  );
 
   await user.type(screen.getByLabelText(/Harvest Date/i), input.date);
   await user.type(
     screen.getByRole("spinbutton", { name: /Weight/i }),
     input.weight,
   );
-  await user.type(screen.getByRole("textbox", { name: /Notes/i }), input.notes);
+  await user.type(
+    screen.getByRole("textbox", { name: /General notes/i }),
+    input.notes,
+  );
 
   await user.click(screen.getByRole("button", { name: /Submit/i }));
 
