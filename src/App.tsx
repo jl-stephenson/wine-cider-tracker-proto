@@ -7,7 +7,7 @@ function handleSubmit(data: HarvestFormData) {
 
 export default function App() {
   return (
-    <main>
+    <main className="wrapper">
       <HarvestForm onSubmit={handleSubmit} />
     </main>
   );

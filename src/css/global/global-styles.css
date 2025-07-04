@@ -34,8 +34,8 @@ h3 {
 }
 
 small {
-    font-size: var(--step--1);
-    color: var(--color-error);
+  font-size: var(--step--1);
+  color: var(--color-error);
 }
 
 :focus:not(:focus-visible) {
@@ -53,51 +53,50 @@ small {
   }
 }
 
-form > * + * {
-  margin-top: var(--flow-space, 1rem);
-}
-
 :is(input, select, textarea) {
-    accent-color: var(--color-dark);
+  accent-color: var(--color-dark);
 }
 
-:is(input:not([type="checkbox"], [type="radio"], [type="color"]), select, textarea) {
-    padding: 0.5em 0.8em;
-    border-radius: var(--radius-s);
-    border: var(--stroke);
-    background: var(--color-white);
-    width: 100%;
-}
-
-&::placeholder {
+:is(
+  input:not([type="checkbox"], [type="radio"], [type="color"]),
+  select,
+  textarea
+) {
+  padding: 0.5em 0.8em;
+  border-radius: var(--radius-s);
+  border: var(--stroke);
+  background: var(--color-white);
+  width: 100%;
+  
+  &::placeholder {
     color: var(--color-dark-glare);
     opacity: 1;
+  }
 }
 
 label {
-    line-height: var(--leading-fine);
-    font-weight: var(--font-medium);
+  line-height: var(--leading-fine);
+  font-weight: var(--font-medium);
 }
 
 label::after {
-    content: "\A";
-    white-space: pre;
+  content: "\A";
+  white-space: pre;
 }
 
 label:has(input) {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-s);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-s);
 }
 
 label:has(input) + label:has(input) {
-    --flow-space: var(--space-s-m)
+  --flow-space: var(--space-s-m);
 }
 
 label:has(input) input {
   transform: translateY(-0.1ex);
 }
-
 
 input:disabled {
   background: var(--color-light-shade);
@@ -108,7 +107,6 @@ label input:disabled + * {
   cursor: not-allowed;
 }
 
-
 fieldset {
   border: var(--stroke);
   padding: var(--space-s);
@@ -118,4 +116,3 @@ legend {
   font-weight: var(--font-medium);
   padding-inline: var(--space-xs);
 }
-

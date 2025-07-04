@@ -3,3 +3,8 @@
 @import "./global/variables.css";
 
 @import "./global/global-styles.css";
+
+@import "./blocks/card.css";
+@import "./blocks/button.css";
+@import "./compositions/flow.css";
+@import "./compositions/wrapper.css"

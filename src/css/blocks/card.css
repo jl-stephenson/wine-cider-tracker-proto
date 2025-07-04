@@ -1,0 +1,22 @@
+.card {
+  border: var(--stroke);
+  border-radius: var(--radius-s);
+  
+}
+
+.card__heading {
+  background: var(--color-light);
+  width: 100%;
+  border-bottom: var(--stroke);
+  padding: var(--space-l);
+}
+
+.card__content {
+  background: var(--color-light-glare);
+  padding: var(--space-l);
+}
+
+.card__segment {
+    border-top: var(--stroke);
+    padding-block-start: 1em;
+}
