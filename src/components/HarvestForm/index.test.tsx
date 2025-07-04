@@ -30,6 +30,8 @@ it("renders App component", () => {
   expect(
     screen.getByRole("textbox", { name: /General notes/i }),
   ).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: /Add Fruit/i })).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: /Submit/i })).toBeInTheDocument();
 });
 
 it("calls onSubmit with data when submit is clicked", async () => {
@@ -121,4 +123,20 @@ it("doesn't call onSubmit and shows errors on invalid input", async () => {
   ).toBeInTheDocument();
 
   expect(mockSubmit).not.toHaveBeenCalled();
+});
+
+it("adds and deletes fruit fields", async () => {
+  const user = userEvent.setup();
+  const mockSubmit = vi.fn();
+  render(<HarvestForm onSubmit={mockSubmit} />);
+
+  expect(screen.getAllByRole("combobox", { name: /Fruit/i })).toHaveLength(1);
+
+  await user.click(screen.getByRole("button", { name: /Add Fruit/i }));
+
+  expect(screen.getAllByRole("combobox", { name: /Fruit/i })).toHaveLength(2);
+
+  await user.click(screen.getByRole("button", { name: /Delete/i }));
+
+  expect(screen.getAllByRole("combobox", { name: /Fruit/i })).toHaveLength(1);
 });
