@@ -11,6 +11,7 @@ it("renders App component", () => {
     screen.getByRole("heading", { level: 2, name: /Harvest Details/i }),
   ).toBeInTheDocument();
   expect(screen.getByRole("combobox", { name: /Fruit/i })).toBeInTheDocument();
+  expect(screen.getAllByRole("option")).toHaveLength(2);
   expect(screen.getByRole("option", { name: /Apples/i })).toBeInTheDocument();
   expect(screen.getByRole("option", { name: /Grapes/i })).toBeInTheDocument();
   expect(
@@ -37,10 +38,14 @@ it("calls onSubmit with data when submit is clicked", async () => {
   render(<HarvestForm onSubmit={mockSubmit} />);
 
   const input = {
-    fruit: "grapes",
-    variety: "bramley",
-    location: "there",
-    varietyNotes: "good",
+    fruits: [
+      {
+        type: "apples",
+        variety: "bramley",
+        location: "there",
+        varietyNotes: "good",
+      },
+    ],
     date: "2024-01-01",
     weight: "1",
     notes: "wet",
@@ -48,20 +53,20 @@ it("calls onSubmit with data when submit is clicked", async () => {
 
   await user.selectOptions(
     screen.getByRole("combobox", { name: /Fruit/i }),
-    "grapes",
+    input.fruits[0].type,
   );
   await user.type(
     screen.getByRole("textbox", { name: /^Variety$/i }),
-    input.variety,
+    input.fruits[0].variety,
   );
   await user.type(
     screen.getByRole("textbox", { name: /Location/i }),
-    input.location,
+    input.fruits[0].location,
   );
 
   await user.type(
     screen.getByRole("textbox", { name: /Notes on variety/i }),
-    input.varietyNotes,
+    input.fruits[0].varietyNotes,
   );
 
   await user.type(screen.getByLabelText(/Harvest Date/i), input.date);
