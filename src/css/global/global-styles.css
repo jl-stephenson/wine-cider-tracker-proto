@@ -35,10 +35,10 @@ h3 {
 
 small {
     font-size: var(--step--1);
-    color: var(--color-secondary);
+    color: var(--color-error);
 }
 
-:focus {
+:focus:not(:focus-visible) {
   outline: none;
 }
 
@@ -54,7 +54,7 @@ small {
 }
 
 form > * + * {
-    margin-top: var(--flow-space, 1rem);
+  margin-top: var(--flow-space, 1rem);
 }
 
 :is(input, select, textarea) {
@@ -65,6 +65,57 @@ form > * + * {
     padding: 0.5em 0.8em;
     border-radius: var(--radius-s);
     border: var(--stroke);
-    background: var(--color-light-glare);
+    background: var(--color-white);
     width: 100%;
 }
+
+&::placeholder {
+    color: var(--color-dark-glare);
+    opacity: 1;
+}
+
+label {
+    line-height: var(--leading-fine);
+    font-weight: var(--fonr-medium);
+}
+
+label::after {
+    content: "\A";
+    white-space: pre;
+}
+
+label:has(input) {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-s);
+}
+
+label:has(input) + label:has(input) {
+    --flow-space: var(--space-s-m)
+}
+
+label:has(input) input {
+  transform: translateY(-0.1ex);
+}
+
+
+input:disabled {
+  background: var(--color-mid);
+}
+
+input:disabled,
+label input:disabled + * {
+  cursor: not-allowed;
+}
+
+
+fieldset {
+  border: var(--stroke);
+  padding: var(--space-s);
+}
+
+legend {
+  font-weight: var(--font-medium);
+  padding-inline: var(--space-xs);
+}
+

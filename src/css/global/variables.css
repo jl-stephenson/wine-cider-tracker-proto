@@ -6,6 +6,7 @@
   --color-light: #edece4;
   --color-light-glare: #f4f3ef;
   --color-light-shade: #b4b3ad;
+  --color-white: #fff;
   --color-primary-glare: #22aaa1;
   --color-primary: #298a83;
   --color-primary-shade: #1f6d67;
@@ -16,6 +17,9 @@
   --color-empty: #087ca7;
   --color-ready: #d64933;
   --color-aging: #f17f29;
+  --color-error: var(--color-ready);
+  --color-success: var(--color-fermenting);
+  --color-waring: var(--color-aging);
 
   /* fonts */
   --font-base: "Karla", sans-serif;
@@ -49,4 +53,18 @@
   --radius-s: 0.2rem;
   --radius-m: 0.75rem;
   --radius-l: 2.5rem;
+
+  /* spacing */
+  --space-xs: clamp(0.5rem, 0.4844rem + 0.0781vw, 0.5625rem);
+  --space-s: clamp(0.625rem, 0.5938rem + 0.1563vw, 0.75rem);
+  --space-m: clamp(0.9375rem, 0.8906rem + 0.2344vw, 1.125rem);
+  --space-l: clamp(1.25rem, 1.1875rem + 0.3125vw, 1.5rem);
+  --space-xl: clamp(1.875rem, 1.7813rem + 0.4688vw, 2.25rem);
+  --space-2xl: clamp(2.5rem, 2.375rem + 0.625vw, 3rem);
+  --space-3xl: clamp(3.75rem, 3.5625rem + 0.9375vw, 4.5rem);
+
+  --space-xs-l: clamp(0.5rem, 0.25rem + 1.25vw, 1.5rem);
+  --space-s-m: clamp(0.625rem, 0.5rem + 0.625vw, 1.125rem);
+  --space-m-l: clamp(0.9375rem, 0.7969rem + 0.7031vw, 1.5rem);
+  --space-2xl-3xl: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
 }
