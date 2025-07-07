@@ -53,6 +53,18 @@ small {
   }
 }
 
+table {
+  border: var(--stroke);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead th {
+  padding-block: var(--space-s);
+}
+
+
+
 :is(input, select, textarea) {
   accent-color: var(--color-dark);
 }
