@@ -12,10 +12,12 @@ const mockHarvest: HarvestFormData = {
 
 it("renders summary table", () => {
   render(<HarvestSummary harvest={mockHarvest} />);
-  screen.debug();
+
   expect(screen.getByRole("table")).toBeInTheDocument();
-  expect(screen.getByRole("caption")).toHaveTextContent(String(mockHarvest.date));
-  
+  expect(screen.getByRole("caption")).toHaveTextContent(
+    mockHarvest.date.toLocaleDateString(),
+  );
+
   const cells = screen.getAllByRole("cell");
   expect(cells).toHaveLength(2);
   expect(cells[0]).toHaveTextContent(mockHarvest.fruits[0].variety);

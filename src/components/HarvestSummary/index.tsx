@@ -12,7 +12,7 @@ export function HarvestSummary({ harvest }: HarvestSummaryProps) {
         </div>
       <div className="card__content">
         <table>
-          <caption>{String(harvest.date)}</caption>
+          <caption>Date: {harvest.date.toLocaleDateString()}</caption>
           <thead>
             <tr>
               <th>Variety</th>
@@ -20,10 +20,10 @@ export function HarvestSummary({ harvest }: HarvestSummaryProps) {
             </tr>
           </thead>
           <tbody>
-            {harvest.fruits.map((fruit) => (
-              <tr>
+            {harvest.fruits.map((fruit, index) => (
+              <tr key={index}>
                 <td>{fruit.variety}</td>
-                <td>{fruit.weight}</td>
+                <td>{fruit.weight} kg</td>
               </tr>
             ))}
           </tbody>

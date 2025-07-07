@@ -8,7 +8,7 @@ it("renders App component", () => {
   render(<HarvestForm onSubmit={mockSubmit} />);
 
   expect(
-    screen.getByRole("heading", { level: 2, name: /Harvest Details/i }),
+    screen.getByRole("heading", { level: 2, name: /Add New Harvest/i }),
   ).toBeInTheDocument();
 
   // General fields
