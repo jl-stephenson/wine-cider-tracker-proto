@@ -8,7 +8,6 @@
   width: 100%;
   border: var(--stroke);
   line-height: var(--leading-flat);
-  border: var(--stroke);
   cursor: pointer;
   background: var(--button-bg);
   color: var(--button-text);
