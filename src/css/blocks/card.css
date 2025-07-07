@@ -1,0 +1,30 @@
+.card {
+  border: var(--stroke);
+  border-radius: var(--radius-s);
+  overflow: hidden;
+}
+
+.card__heading {
+  background: var(--color-light);
+  width: 100%;
+  border-bottom: var(--stroke);
+  padding: var(--space-l);
+}
+
+.card__content {
+  background: var(--color-light-glare);
+  padding: var(--space-l);
+}
+
+.card__segment {
+  background: var(--color-light-glare);
+  border-top: var(--stroke);
+  padding: var(--space-l);
+}
+
+.card__footer {
+  background: var(--color-light-glare);
+  display: flex;
+  gap: var(--space-m);
+  padding: var(--space-l);
+}

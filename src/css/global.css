@@ -1,5 +1,8 @@
-@import "./global/reset.css";
-@import "./global/fonts.css";
-@import "./global/variables.css";
+@import-glob "./global/reset.css";
+@import-glob "./global/fonts.css";
+@import-glob "./global/variables.css";
 
-@import "./global/global-styles.css";
+@import-glob "./global/global-styles.css";
+
+@import-glob "blocks/*.css";
+@import-glob "compositions/*.css";

@@ -26,6 +26,7 @@
   --font-heading: "Instrument Sans", sans-serif;
 
   /* text leading */
+  --leading-flat: 1;
   --leading-fine: 1.2;
   --leading-standard: 1.4;
 
@@ -67,4 +68,6 @@
   --space-s-m: clamp(0.625rem, 0.5rem + 0.625vw, 1.125rem);
   --space-m-l: clamp(0.9375rem, 0.7969rem + 0.7031vw, 1.5rem);
   --space-2xl-3xl: clamp(2.5rem, 2rem + 2.5vw, 4.5rem);
+
+  --gutter: var(--space-m-l);
 }
