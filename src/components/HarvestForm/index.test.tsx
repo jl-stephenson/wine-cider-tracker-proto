@@ -8,7 +8,7 @@ it("renders App component", () => {
   render(<HarvestForm onSubmit={mockSubmit} />);
 
   expect(
-    screen.getByRole("heading", { level: 2, name: /Harvest Details/i }),
+    screen.getByRole("heading", { level: 2, name: /Add New Harvest/i }),
   ).toBeInTheDocument();
 
   // General fields
@@ -129,7 +129,7 @@ it("doesn't call onSubmit and shows errors on invalid input", async () => {
     screen.getByText(/Harvest date cannot be in future/i),
   ).toBeInTheDocument();
   expect(
-    screen.getByText(/Please enter a number up to 2 decimal places/i),
+    screen.getByText(/Please enter a valid number/i),
   ).toBeInTheDocument();
 
   expect(mockSubmit).not.toHaveBeenCalled();

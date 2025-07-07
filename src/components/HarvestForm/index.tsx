@@ -44,7 +44,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
         noValidate
       >
         <div className="card__heading">
-          <h2 id="harvest-form-heading">Harvest Details</h2>
+          <h2 id="harvest-form-heading">Add New Harvest</h2>
         </div>
         <div className="card__content flow">
           <h4>General</h4>
