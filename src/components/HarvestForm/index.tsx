@@ -71,6 +71,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
               {...register("notes")}
             />
           </div>
+          </div>
 
           {fields.map((fruits, index) => (
             <div key={fruits.id} className="card__segment flow">
@@ -148,34 +149,36 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
                 <button
                   type="button"
                   className="button"
+                  data-button-variant="secondary"
                   onClick={() => remove(index)}
                 >
-                  Delete
+                  Delete {`Fruit ${index + 1}`}
                 </button>
               )}
             </div>
           ))}
 
-          <button
-            type="button"
-            className="button"
-            onClick={() =>
-              append({
-                type: "apples",
-                variety: "",
-                location: "",
-                varietyNotes: "",
-                weight: 0,
-              })
-            }
-          >
-            Add Fruit
-          </button>
-
-          <button type="submit" className="button">
-            Submit
-          </button>
-        </div>
+          <div className="card__footer">
+            <button
+              type="button"
+              className="button"
+              data-button-variant="tertiary"
+              onClick={() =>
+                append({
+                  type: "apples",
+                  variety: "",
+                  location: "",
+                  varietyNotes: "",
+                  weight: 0,
+                })
+              }
+            >
+              Add Fruit
+            </button>
+            <button type="submit" className="button">
+              Submit
+            </button>
+          </div>
       </form>
     </section>
   );

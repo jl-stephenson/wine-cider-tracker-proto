@@ -1,8 +1,9 @@
 .button {
---button-bg: var(--color-primary);
---button-text: var(--color-white);
---button-x-padding: 1.5em;
---button-y-padding: 1em;
+  --button-bg: var(--color-primary);
+  --button-text: var(--color-white);
+  --button-x-padding: 1.5em;
+  --button-y-padding: 1em;
+  --focus-color: var(--color-primary);
 
   width: 100%;
   border: var(--stroke);
@@ -13,4 +14,22 @@
   color: var(--button-text);
   padding: var(--button-y-padding) var(--button-x-padding);
   text-decoration: none;
+}
+
+.button:hover {
+  filter: brightness(110%);
+}
+
+.button[data-button-variant="secondary"] {
+  --button-bg: var(--color-secondary);
+  --focus-color: var(--color-secondary);
+}
+
+.button[data-button-variant="tertiary"] {
+  --button-bg: var(--color-empty);
+  --focus-color: var(--color-empty);
+}
+
+.button:active {
+  transform: scale(99%);
 }

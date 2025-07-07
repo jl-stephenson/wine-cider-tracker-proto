@@ -1,7 +1,6 @@
 .card {
   border: var(--stroke);
   border-radius: var(--radius-s);
-  
 }
 
 .card__heading {
@@ -17,6 +16,14 @@
 }
 
 .card__segment {
-    border-top: var(--stroke);
-    padding-block-start: 1em;
+  background: var(--color-light-glare);
+  border-top: var(--stroke);
+  padding: var(--space-l);
+}
+
+.card__footer {
+  background: var(--color-light-glare);
+  display: flex;
+  gap: var(--space-m);
+  padding: var(--space-l);
 }
