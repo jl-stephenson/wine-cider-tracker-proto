@@ -1,6 +1,7 @@
 .card {
   border: var(--stroke);
   border-radius: var(--radius-s);
+  overflow: hidden;
 }
 
 .card__heading {
