@@ -92,11 +92,11 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
                   id={`variety-${index}`}
                   type="text"
                   {...register(`fruits.${index}.variety`)}
-                  aria-describedby="variety-error"
+                  aria-describedby={`variety-error-${index}`}
                   aria-invalid={!!errors.fruits?.[index]?.variety}
                 />
                 {errors.fruits?.[index]?.variety?.message && (
-                  <p role="alert" id="variety-error">
+                  <p role="alert" id={`variety-error-${index}`}>
                     <small>{errors.fruits?.[index]?.variety?.message}</small>
                   </p>
                 )}
@@ -107,11 +107,11 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
                   id={`location-${index}`}
                   type="text"
                   {...register(`fruits.${index}.location`)}
-                  aria-describedby="location-error"
+                  aria-describedby={`location-error-${index}`}
                   aria-invalid={!!errors.fruits?.[index]?.location}
                 />
                 {errors.fruits?.[index]?.location?.message && (
-                  <p role="alert" id="location-error">
+                  <p role="alert" id={`location-error-${index}`}>
                     <small>{errors.fruits?.[index]?.location?.message}</small>
                   </p>
                 )}
@@ -136,11 +136,11 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
                   {...register(`fruits.${index}.weight`, {
                     valueAsNumber: true,
                   })}
-                  aria-describedby="weight-error"
+                  aria-describedby={`weight-error-${index}`}
                   aria-invalid={!!errors.fruits?.[index]?.weight}
                 />
                 {errors.fruits?.[index]?.weight?.message && (
-                  <p role="alert" id="weight-error">
+                  <p role="alert" id={`weight-error-${index}`}>
                     <small>{errors.fruits?.[index]?.weight?.message}</small>
                   </p>
                 )}
