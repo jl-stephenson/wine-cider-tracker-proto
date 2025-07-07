@@ -7,6 +7,9 @@ type HarvestSummaryProps = {
 export function HarvestSummary({ harvest }: HarvestSummaryProps) {
   return (
     <section className="card">
+        <div className="card__heading">
+            <h2>Harvest Summary</h2>
+        </div>
       <div className="card__content">
         <table>
           <caption>{String(harvest.date)}</caption>
