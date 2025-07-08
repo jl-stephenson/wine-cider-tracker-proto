@@ -24,10 +24,15 @@ export default function App() {
 
   return (
     <DashboardLayout>
-     <DashboardNav />
-      <div>
-        <label htmlFor="search" className="visually-hidden">Seach</label>
-        <input type="text" id="search"/>
+      <DashboardNav />
+      <div className="site-header">
+        <p>Home {">"} Harvests</p>
+        <div>
+        <label htmlFor="search" className="visually-hidden">
+          Seach
+        </label>
+        <input type="search" id="search" className="site-header__search" />
+        </div>
       </div>
       <main className="flow">
         <HarvestForm onSubmit={handleSubmit} />
