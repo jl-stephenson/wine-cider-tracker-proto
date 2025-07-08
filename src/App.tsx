@@ -29,14 +29,14 @@ export default function App() {
         <p>Home {">"} Harvests</p>
         <div>
         <label htmlFor="search" className="visually-hidden">
-          Seach
+          Search
         </label>
         <input type="search" id="search" className="site-header__search" />
         </div>
       </div>
       <main className="flow">
         <HarvestForm onSubmit={handleSubmit} />
-        <HarvestSummary harvest={harvest} />{" "}
+        <HarvestSummary harvest={harvest} />
       </main>
     </DashboardLayout>
   );

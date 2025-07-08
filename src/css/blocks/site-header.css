@@ -4,7 +4,6 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--gutter);
-  border-inline: var(--stroke);
 }
 
 input.site-header__search {
