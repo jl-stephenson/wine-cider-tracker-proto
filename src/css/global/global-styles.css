@@ -38,6 +38,29 @@ small {
   color: var(--color-error);
 }
 
+/* lists */
+
+[role="list"][class],
+[role="tablist"][class] {
+  margin-block: 0;
+  padding: 0;
+}
+
+/* interactivity */
+
+a:not([class]):hover {
+  text-underline-offset: 0.2lh;
+}
+
+:is(h1, h2, h3, h4) a:not([class]) {
+  text-decoration-thickness: 0.1ex;
+  text-underline-offset: 0.2ex;
+}
+
+:is(h1, h2, h3, h4) a:not([class]):hover {
+  text-underline-offset: 0.3ex;
+}
+
 :focus:not(:focus-visible) {
   outline: none;
 }
@@ -52,6 +75,8 @@ small {
     --focus-offset: 0.08em;
   }
 }
+
+/* tables */
 
 table {
   border: var(--stroke);
@@ -94,6 +119,8 @@ caption {
   margin-block-end: var(--space-s);
 }
 
+/* forms */
+
 :is(input, select, textarea) {
   accent-color: var(--color-dark);
 }
@@ -108,7 +135,7 @@ caption {
   border: var(--stroke);
   background: var(--color-white);
   width: 100%;
-  
+
   &::placeholder {
     color: var(--color-dark-glare);
     opacity: 1;

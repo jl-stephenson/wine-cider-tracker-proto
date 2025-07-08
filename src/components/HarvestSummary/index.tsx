@@ -6,11 +6,11 @@ type HarvestSummaryProps = {
 
 export function HarvestSummary({ harvest }: HarvestSummaryProps) {
   return (
-    <section className="card">
-        <div className="card__heading">
+    <section className="panel">
+        <div className="panel__heading">
             <h2>Harvest Summary</h2>
         </div>
-      <div className="card__content">
+      <div className="panel__content">
         <table>
           <caption>Date: {harvest.date.toLocaleDateString()}</caption>
           <thead>

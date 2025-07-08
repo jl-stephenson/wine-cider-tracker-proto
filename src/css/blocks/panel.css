@@ -1,28 +1,26 @@
-.card {
-  border: var(--stroke);
-  border-radius: var(--radius-s);
-  overflow: hidden;
+.panel {
+  border-bottom: var(--stroke);
 }
 
-.card__heading {
+.panel__heading {
   background: var(--color-light);
   width: 100%;
   border-bottom: var(--stroke);
   padding: var(--space-l);
 }
 
-.card__content {
+.panel__content {
   background: var(--color-light-glare);
   padding: var(--space-l);
 }
 
-.card__segment {
+.panel__segment {
   background: var(--color-light-glare);
   border-top: var(--stroke);
   padding: var(--space-l);
 }
 
-.card__footer {
+.panel__footer {
   background: var(--color-light-glare);
   display: flex;
   gap: var(--space-m);

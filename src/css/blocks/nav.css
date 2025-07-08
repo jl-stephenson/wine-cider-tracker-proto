@@ -1,0 +1,14 @@
+.nav {
+  --flow-space: var(--space-xl);
+  line-height: var(--leading-flat);
+}
+
+.nav > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav a:not(:hover):not([aria-current="page"]) {
+  text-decoration: none;
+}
