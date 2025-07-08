@@ -1,4 +1,4 @@
-export function SidebarNav() {
+export function DashboardNav() {
   return (
     <header className="sidebar">
       <svg

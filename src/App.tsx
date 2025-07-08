@@ -3,7 +3,8 @@ import type { HarvestFormData } from "@/schemas/HarvestForm";
 import { useState } from "react";
 import { HarvestSummary } from "./components/HarvestSummary";
 import { DashboardLayout } from "./layouts/DashboardLayout";
-import { DashboardNav } from "./components/DashboardNav";
+import { SidebarNavNav } from "./components/SidebarNav";
+import { SidebarNav } from "./components/DashboardNav";
 
 export default function App() {
   const [harvest, setHarvest] = useState<HarvestFormData>({
@@ -24,7 +25,7 @@ export default function App() {
 
   return (
     <DashboardLayout>
-      <DashboardNav />
+      <SidebarNav />
       <div className="site-header">
         <p>Home {">"} Harvests</p>
         <div>
