@@ -1,10 +1,10 @@
+import { useState } from "react";
 import { HarvestForm } from "@/components/HarvestForm";
 import type { HarvestFormData } from "@/schemas/HarvestForm";
-import { useState } from "react";
 import { HarvestSummary } from "./components/HarvestSummary";
 import { DashboardLayout } from "./layouts/DashboardLayout";
-import { SidebarNavNav } from "./components/SidebarNav";
-import { SidebarNav } from "./components/DashboardNav";
+import { SidebarNav } from "./components/SidebarNav";
+import { SiteHeader } from "./components/SiteHeader";
 
 export default function App() {
   const [harvest, setHarvest] = useState<HarvestFormData>({
@@ -26,15 +26,7 @@ export default function App() {
   return (
     <DashboardLayout>
       <SidebarNav />
-      <div className="site-header">
-        <p>Home {">"} Harvests</p>
-        <div>
-        <label htmlFor="search" className="visually-hidden">
-          Search
-        </label>
-        <input type="search" id="search" className="site-header__search" />
-        </div>
-      </div>
+      <SiteHeader />
       <main className="flow">
         <HarvestForm onSubmit={handleSubmit} />
         <HarvestSummary harvest={harvest} />
