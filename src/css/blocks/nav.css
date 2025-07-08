@@ -1,0 +1,9 @@
+.nav {
+  --flow-space: var(--space-m);
+  line-height: var(--leading-flat);
+  background: var(--color-white);
+}
+
+.nav a:not(:hover):not([aria-current="page"]) {
+  text-decoration: none;
+}
