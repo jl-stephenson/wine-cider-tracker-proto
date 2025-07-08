@@ -6,9 +6,28 @@
   gap: var(--gutter);
 }
 
+.site-header__toggle {
+  background: transparent;
+  border: none;
+  font-size: var(--step-2);
+  cursor: pointer;
+}
+
 input.site-header__search {
   background-image: url("/images/magnifier.svg");
   background-repeat: no-repeat;
   background-position: right 0.8em center;
   background-size: 1em 1em;
+}
+
+@media (min-width: 768px) {
+  .site-header__toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header__breadcrumb {
+    display: none;
+  }
 }

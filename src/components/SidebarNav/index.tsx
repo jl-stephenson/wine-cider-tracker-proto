@@ -1,6 +1,12 @@
-export function SidebarNav() {
+type SidebarNavProps = {
+  isSidebarOpen: boolean;
+  toggleSidebar: () => void;
+}
+
+export function SidebarNav({isSidebarOpen, toggleSidebar}: SidebarNavProps) {
   return (
-    <nav className="nav" aria-label="Primary">
+    <nav id="sidebar" className="nav" data-open={isSidebarOpen} aria-label="Primary">
+      <button className="nav__close" onClick={toggleSidebar} aria-label="Close menu">x</button>
       <a href="/" className="sidebar__logo" aria-label="Home">
       <svg
         xmlns="http://www.w3.org/2000/svg"
