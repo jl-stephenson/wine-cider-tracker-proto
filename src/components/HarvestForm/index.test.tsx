@@ -128,9 +128,7 @@ it("doesn't call onSubmit and shows errors on invalid input", async () => {
   expect(
     screen.getByText(/Harvest date cannot be in future/i),
   ).toBeInTheDocument();
-  expect(
-    screen.getByText(/Please enter a valid number/i),
-  ).toBeInTheDocument();
+  expect(screen.getByText(/Please enter a valid number/i)).toBeInTheDocument();
 
   expect(mockSubmit).not.toHaveBeenCalled();
 });

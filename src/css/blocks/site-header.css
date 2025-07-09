@@ -28,8 +28,7 @@ input.site-header__search {
 }
 
 @media (max-width: 48rem) {
- .site-header__breadcrumb {
+  .site-header__breadcrumb {
     display: none;
   }
 }
-
