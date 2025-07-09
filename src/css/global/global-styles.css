@@ -176,7 +176,7 @@ label input:disabled + * {
 }
 
 textarea {
-  resize: none;
+  resize: vertical;
 }
 
 fieldset {

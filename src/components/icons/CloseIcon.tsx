@@ -15,7 +15,7 @@ export function CloseIcon() {
         y2="20"
         stroke="currentColor"
         strokeWidth="2"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
       <line
         x1="4"
@@ -24,7 +24,7 @@ export function CloseIcon() {
         y2="4"
         stroke="currentColor"
         strokeWidth="2"
-        stroke-linecap="round"
+        strokeLinecap="round"
       />
     </svg>
   );
