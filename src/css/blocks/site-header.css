@@ -1,9 +1,10 @@
 .site-header {
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: var(--gutter);
+  padding: var(--space-m);
 }
 
 .site-header__toggle {
@@ -26,8 +27,9 @@ input.site-header__search {
   }
 }
 
-@media (max-width: 768px) {
-  .site-header__breadcrumb {
+@media (max-width: 48rem) {
+ .site-header__breadcrumb {
     display: none;
   }
 }
+

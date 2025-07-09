@@ -39,7 +39,7 @@ export default function App() {
     <DashboardLayout>
       <SidebarNav isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <SiteHeader isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <main className="flow">
+      <main className="flow" data-layout-area="content">
         <HarvestForm onSubmit={handleSubmit} />
         <HarvestSummary harvest={harvest} />
       </main>

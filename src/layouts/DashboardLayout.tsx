@@ -3,5 +3,5 @@ type DashboardLayoutProps = {
 };
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
-  return <div className="dashboard">{children}</div>;
+  return <div className="grid" data-layout="dashboard">{children}</div>;
 }
