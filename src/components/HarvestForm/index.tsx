@@ -47,7 +47,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
           <h2 id="harvest-form-heading">Add New Harvest</h2>
         </div>
         <div className="panel__content flow">
-          <h4>General</h4>
+          <h3>General</h3>
           <div>
             <label htmlFor="date">Harvest Date</label>
             <input
@@ -75,7 +75,7 @@ export function HarvestForm({ onSubmit }: HarvestFormProps) {
 
         {fields.map((fruits, index) => (
           <div key={fruits.id} className="panel__segment flow">
-            <h4>Fruit {index + 1}</h4>
+            <h3>Fruit {index + 1}</h3>
             <div>
               <label htmlFor={`type-${index}`}>Fruit</label>
               <select

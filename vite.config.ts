@@ -1,11 +1,14 @@
 import { defineConfig } from "vite";
+import compression from "vite-plugin-compression";
 import react from "@vitejs/plugin-react-swc";
-import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  build: {
+    target: "es2022",
+  },
+  plugins: [react(), compression({ algorithm: "gzip" })],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
