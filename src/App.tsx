@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {useMediaQuery} from "usehooks-ts";
+import { useMediaQuery } from "usehooks-ts";
 import { HarvestForm } from "@/components/HarvestForm";
 import type { HarvestFormData } from "@/schemas/HarvestForm";
 import { HarvestSummary } from "./components/HarvestSummary";
@@ -24,7 +24,7 @@ export default function App() {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   useEffect(() => {
-  if (isDesktop) setIsSidebarOpen(false);
+    if (isDesktop) setIsSidebarOpen(false);
   }, [isDesktop]);
 
   function handleSubmit(data: HarvestFormData) {

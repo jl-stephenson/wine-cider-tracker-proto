@@ -7,9 +7,9 @@ type HarvestSummaryProps = {
 export function HarvestSummary({ harvest }: HarvestSummaryProps) {
   return (
     <section className="panel">
-        <div className="panel__heading">
-            <h2>Harvest Summary</h2>
-        </div>
+      <div className="panel__heading">
+        <h2>Harvest Summary</h2>
+      </div>
       <div className="panel__content">
         <table>
           <caption>Date: {harvest.date.toLocaleDateString()}</caption>

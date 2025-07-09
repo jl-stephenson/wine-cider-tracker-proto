@@ -21,15 +21,14 @@ input.site-header__search {
   background-size: 1em 1em;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   .site-header__toggle {
     display: none;
   }
 }
 
 @media (max-width: 48rem) {
- .site-header__breadcrumb {
+  .site-header__breadcrumb {
     display: none;
   }
 }
-
