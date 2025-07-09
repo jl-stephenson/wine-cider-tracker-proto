@@ -175,6 +175,10 @@ label input:disabled + * {
   cursor: not-allowed;
 }
 
+textarea {
+  resize: none;
+}
+
 fieldset {
   border: var(--stroke);
   padding: var(--space-s);
