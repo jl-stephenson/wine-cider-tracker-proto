@@ -18,6 +18,10 @@
   --flow-space: var(--space-xl);
 }
 
+.nav svg {
+  color: var(--color-primary-shade);
+}
+
 .nav a:not(:hover):not([aria-current="page"]) {
   text-decoration: none;
 }
