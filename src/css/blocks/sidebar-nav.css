@@ -1,4 +1,4 @@
-.nav {
+.sidebar-nav {
   line-height: var(--leading-flat);
   background: var(--color-white);
   text-transform: uppercase;
@@ -11,22 +11,22 @@
   padding: var(--space-m);
 }
 
-.nav > ul {
+.sidebar-nav > ul {
   display: flex;
   flex-direction: column;
   align-items: center;
   --flow-space: var(--space-xl);
 }
 
-.nav svg {
+.sidebar-nav svg {
   color: var(--color-primary-shade);
 }
 
-.nav a:not(:hover):not([aria-current="page"]) {
+.sidebar-nav a:not(:hover):not([aria-current="page"]) {
   text-decoration: none;
 }
 
-.nav[data-open="true"] {
+.sidebar-nav[data-open="true"] {
   border: none;
   background: var(--color-light);
   padding-top: var(--space-3xl);

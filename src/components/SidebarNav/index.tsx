@@ -25,7 +25,7 @@ export function SidebarNav({ isSidebarOpen, toggleSidebar }: SidebarNavProps) {
   return (
     <nav
       id="sidebar"
-      className="nav"
+      className="sidebar-nav"
       data-layout-area="sidebar"
       data-open={isSidebarOpen}
       aria-label="Primary"
