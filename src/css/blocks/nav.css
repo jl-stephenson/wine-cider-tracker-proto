@@ -1,5 +1,4 @@
 .nav {
-  --flow-space: var(--space-xl);
   line-height: var(--leading-flat);
   background: var(--color-white);
   text-transform: uppercase;
@@ -9,14 +8,22 @@
   align-items: center;
   gap: var(--space-xl);
   border-right: var(--stroke);
+  padding: var(--space-m);
 }
 
 .nav > ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  --flow-space: var(--space-xl);
 }
 
 .nav a:not(:hover):not([aria-current="page"]) {
   text-decoration: none;
+}
+
+.nav[data-open="true"] {
+  border: none;
+  background: var(--color-light);
+  padding-top: var(--space-3xl);
 }

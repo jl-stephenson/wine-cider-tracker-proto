@@ -1,9 +1,17 @@
 .site-header {
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: var(--gutter);
+  padding: var(--space-m);
+}
+
+.site-header__toggle {
+  background: transparent;
+  border: none;
+  font-size: var(--step-2);
+  cursor: pointer;
 }
 
 input.site-header__search {
@@ -12,3 +20,16 @@ input.site-header__search {
   background-position: right 0.8em center;
   background-size: 1em 1em;
 }
+
+@media (min-width: 768px) {
+  .site-header__toggle {
+    display: none;
+  }
+}
+
+@media (max-width: 48rem) {
+ .site-header__breadcrumb {
+    display: none;
+  }
+}
+
