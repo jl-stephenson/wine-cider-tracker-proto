@@ -20,21 +20,18 @@ export default function App() {
     date: new Date(),
   });
 
-    useEffect(() => {
+  useEffect(() => {
     // create a MediaQueryList
     const mql = window.matchMedia("(min-width: 768px)");
 
     const handler = (e: MediaQueryListEvent) => {
       if (e.matches) {
-        
         setIsSidebarOpen(false);
       }
     };
 
-    
     mql.addEventListener("change", handler);
 
-   
     if (mql.matches) {
       setIsSidebarOpen(false);
     }
@@ -54,7 +51,7 @@ export default function App() {
 
   return (
     <DashboardLayout>
-      <SidebarNav  isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <SidebarNav isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <SiteHeader isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <main className="flow">
         <HarvestForm onSubmit={handleSubmit} />
