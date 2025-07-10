@@ -1,5 +1,5 @@
 import type { HarvestFormData } from "@/schemas/HarvestForm";
-import { PopoverButton } from "../PopoverButton";
+import { SplitButton } from "../SplitButton";
 
 type HarvestSummaryProps = {
   harvest: HarvestFormData;
@@ -27,7 +27,7 @@ export function HarvestSummary({ harvest }: HarvestSummaryProps) {
                 <td>{fruit.variety}</td>
                 <td>{fruit.weight} kg</td>
                 <td>
-                  <PopoverButton />
+                 <SplitButton />
                 </td>
               </tr>
             ))}
