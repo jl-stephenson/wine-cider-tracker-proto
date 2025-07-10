@@ -1,0 +1,36 @@
+/* #anchor_1 {
+  width: 20%;
+} */
+
+#action-list {
+  position-area: block-end center;
+    position-try-fallbacks: 
+    --fallback-above,
+    --fallback-left,
+    --fallback-right;
+}
+
+@position-try --fallback-above {
+  position-area: block-start center; 
+}
+
+@position-try --fallback-left {
+  position-area: inline-start block-start; 
+}
+
+@position-try --fallback-right {
+  position-area: inline-end block-start;
+}
+
+[popover] {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  height: auto;
+  inset: unset;
+  display: flex;
+  flex-direction: column;
+  --flow-space: 0;
+}
+
