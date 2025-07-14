@@ -41,7 +41,8 @@ small {
 /* lists */
 
 [role="list"][class],
-[role="tablist"][class] {
+[role="tablist"][class],
+[role="menu"][class] {
   margin-block: 0;
   padding: 0;
 }
@@ -97,6 +98,10 @@ thead th {
 td,
 th {
   padding: var(--space-xs) var(--space-s);
+}
+
+td {
+  background: var(--color-white);
 }
 
 th:not(:only-of-type) {
