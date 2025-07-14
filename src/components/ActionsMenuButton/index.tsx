@@ -21,7 +21,7 @@ export function ActionsMenuButton() {
       <ul
         id="menu1"
         className="menu-button__list"
-        data-isopen={isMenuOpen}
+        data-is-open={isMenuOpen}
         role="menu"
         tabIndex={-1}
         aria-labelledby="menu-button1"

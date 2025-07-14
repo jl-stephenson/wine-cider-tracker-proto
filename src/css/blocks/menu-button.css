@@ -17,12 +17,17 @@
 
 .menu-button__trigger svg {
   display: none;
+  transition: transform 0.2s ease-in-out;
 }
 
 @media (min-width: 48rem) {
   .menu-button__trigger svg {
     display: block;
   }
+}
+
+.menu-button__trigger[aria-expanded="true"] svg {
+  transform: rotate(180deg);
 }
 
 .menu-button__list {
@@ -32,7 +37,7 @@
   width: 100%;
 }
 
-.menu-button__list[data-isopen="true"] {
+.menu-button__list[data-is-open="true"] {
   display: block;
 }
 
