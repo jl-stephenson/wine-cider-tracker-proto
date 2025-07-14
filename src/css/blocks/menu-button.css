@@ -1,0 +1,43 @@
+.menu-button__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+@media (min-width: 48rem) {
+  .menu-button__trigger {
+    justify-content: space-between;
+  }
+}
+
+.menu-button__trigger svg {
+  display: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+@media (min-width: 48rem) {
+  .menu-button__trigger svg {
+    display: block;
+  }
+}
+
+.menu-button__trigger[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.menu-button__list {
+  width: var(--radix-dropdown-menu-trigger-width);
+  border: var(--stroke);
+}
+
+.menu-button__option {
+  --button-bg: var(--color-white);
+  --button-text: var(--color-dark);
+  border: none;
+  text-align: left;
+}
+
+.menu-button__option:hover {
+  filter: brightness(95%);
+}

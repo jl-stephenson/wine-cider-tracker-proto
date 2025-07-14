@@ -30,17 +30,18 @@ export function SidebarNav({ isSidebarOpen, toggleSidebar }: SidebarNavProps) {
       data-open={isSidebarOpen}
       aria-label="Primary"
     >
-      {!isSidebarOpen && (
-        <a href="/" className="sidebar__logo" aria-label="Home">
-          <LogoIcon />
-        </a>
-      )}
-
       <ul role="list" className="flow">
-        {isSidebarOpen && (
+        {isSidebarOpen ? (
           <li>
             <a href="/" ref={firstLinkRef}>
               Home
+            </a>
+          </li>
+        ) : (
+          <li>
+            {" "}
+            <a href="/" className="sidebar__logo" aria-label="Home">
+              <LogoIcon />
             </a>
           </li>
         )}

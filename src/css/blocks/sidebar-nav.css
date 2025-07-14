@@ -16,6 +16,8 @@
   flex-direction: column;
   align-items: center;
   --flow-space: var(--space-xl);
+  position: sticky;
+  top: 1rem;
 }
 
 .sidebar-nav svg {

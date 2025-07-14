@@ -12,6 +12,7 @@
 .panel__content {
   background: var(--color-light-glare);
   padding: var(--space-l);
+  padding-bottom: var(--space-2xl);
 }
 
 .panel__segment {
