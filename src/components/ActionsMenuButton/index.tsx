@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronDownIcon } from "../icons/ChevronDownIcon";
 
 export function ActionsMenuButton() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const firstItemRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    if (firstItemRef.current && isMenuOpen) firstItemRef.current.focus();
+  }, [isMenuOpen]);
 
   return (
     <div className="menu-button">
@@ -28,7 +33,7 @@ export function ActionsMenuButton() {
         aria-activedescendant="mi1"
       >
         <li id="mi1" role="menuitem">
-          <button className="menu-button__option button">Process</button>
+          <button className="menu-button__option button" ref={firstItemRef}>Process</button>
         </li>
         <li id="mi2" role="menuitem">
           <button className="menu-button__option button">

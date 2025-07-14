@@ -30,8 +30,6 @@ export function SidebarNav({ isSidebarOpen, toggleSidebar }: SidebarNavProps) {
       data-open={isSidebarOpen}
       aria-label="Primary"
     >
-  
-
       <ul role="list" className="flow">
         {isSidebarOpen ? (
           <li>
@@ -39,9 +37,14 @@ export function SidebarNav({ isSidebarOpen, toggleSidebar }: SidebarNavProps) {
               Home
             </a>
           </li>
-        ) : (<li> <a href="/" className="sidebar__logo" aria-label="Home">
-          <LogoIcon />
-        </a></li>)}
+        ) : (
+          <li>
+            {" "}
+            <a href="/" className="sidebar__logo" aria-label="Home">
+              <LogoIcon />
+            </a>
+          </li>
+        )}
         <li>
           <a href="#">Orchards</a>
         </li>
