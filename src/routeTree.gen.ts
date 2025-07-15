@@ -9,12 +9,48 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TanksRouteImport } from './routes/tanks'
+import { Route as ProcessingRouteImport } from './routes/processing'
+import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as HarvestsRouteImport } from './routes/harvests'
+import { Route as FruitsRouteImport } from './routes/fruits'
+import { Route as FermentationsRouteImport } from './routes/fermentations'
+import { Route as FarmsRouteImport } from './routes/farms'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TanksRoute = TanksRouteImport.update({
+  id: '/tanks',
+  path: '/tanks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessingRoute = ProcessingRouteImport.update({
+  id: '/processing',
+  path: '/processing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryRoute = InventoryRouteImport.update({
+  id: '/inventory',
+  path: '/inventory',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HarvestsRoute = HarvestsRouteImport.update({
   id: '/harvests',
   path: '/harvests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FruitsRoute = FruitsRouteImport.update({
+  id: '/fruits',
+  path: '/fruits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FermentationsRoute = FermentationsRouteImport.update({
+  id: '/fermentations',
+  path: '/fermentations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FarmsRoute = FarmsRouteImport.update({
+  id: '/farms',
+  path: '/farms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,37 +61,128 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/farms': typeof FarmsRoute
+  '/fermentations': typeof FermentationsRoute
+  '/fruits': typeof FruitsRoute
   '/harvests': typeof HarvestsRoute
+  '/inventory': typeof InventoryRoute
+  '/processing': typeof ProcessingRoute
+  '/tanks': typeof TanksRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/farms': typeof FarmsRoute
+  '/fermentations': typeof FermentationsRoute
+  '/fruits': typeof FruitsRoute
   '/harvests': typeof HarvestsRoute
+  '/inventory': typeof InventoryRoute
+  '/processing': typeof ProcessingRoute
+  '/tanks': typeof TanksRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/farms': typeof FarmsRoute
+  '/fermentations': typeof FermentationsRoute
+  '/fruits': typeof FruitsRoute
   '/harvests': typeof HarvestsRoute
+  '/inventory': typeof InventoryRoute
+  '/processing': typeof ProcessingRoute
+  '/tanks': typeof TanksRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/harvests'
+  fullPaths:
+    | '/'
+    | '/farms'
+    | '/fermentations'
+    | '/fruits'
+    | '/harvests'
+    | '/inventory'
+    | '/processing'
+    | '/tanks'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/harvests'
-  id: '__root__' | '/' | '/harvests'
+  to:
+    | '/'
+    | '/farms'
+    | '/fermentations'
+    | '/fruits'
+    | '/harvests'
+    | '/inventory'
+    | '/processing'
+    | '/tanks'
+  id:
+    | '__root__'
+    | '/'
+    | '/farms'
+    | '/fermentations'
+    | '/fruits'
+    | '/harvests'
+    | '/inventory'
+    | '/processing'
+    | '/tanks'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FarmsRoute: typeof FarmsRoute
+  FermentationsRoute: typeof FermentationsRoute
+  FruitsRoute: typeof FruitsRoute
   HarvestsRoute: typeof HarvestsRoute
+  InventoryRoute: typeof InventoryRoute
+  ProcessingRoute: typeof ProcessingRoute
+  TanksRoute: typeof TanksRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tanks': {
+      id: '/tanks'
+      path: '/tanks'
+      fullPath: '/tanks'
+      preLoaderRoute: typeof TanksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/processing': {
+      id: '/processing'
+      path: '/processing'
+      fullPath: '/processing'
+      preLoaderRoute: typeof ProcessingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory': {
+      id: '/inventory'
+      path: '/inventory'
+      fullPath: '/inventory'
+      preLoaderRoute: typeof InventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/harvests': {
       id: '/harvests'
       path: '/harvests'
       fullPath: '/harvests'
       preLoaderRoute: typeof HarvestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fruits': {
+      id: '/fruits'
+      path: '/fruits'
+      fullPath: '/fruits'
+      preLoaderRoute: typeof FruitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fermentations': {
+      id: '/fermentations'
+      path: '/fermentations'
+      fullPath: '/fermentations'
+      preLoaderRoute: typeof FermentationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/farms': {
+      id: '/farms'
+      path: '/farms'
+      fullPath: '/farms'
+      preLoaderRoute: typeof FarmsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,7 +197,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FarmsRoute: FarmsRoute,
+  FermentationsRoute: FermentationsRoute,
+  FruitsRoute: FruitsRoute,
   HarvestsRoute: HarvestsRoute,
+  InventoryRoute: InventoryRoute,
+  ProcessingRoute: ProcessingRoute,
+  TanksRoute: TanksRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

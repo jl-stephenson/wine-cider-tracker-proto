@@ -46,27 +46,25 @@ export function SidebarNav({ isSidebarOpen, toggleSidebar }: SidebarNavProps) {
           </li>
         )}
         <li>
-          <Link to="/">Orchards</Link>
+          <Link to="/farms">Orchards</Link>
         </li>
         <li>
-          <Link to="/">Fruits</Link>
+          <Link to="/fruits">Fruits</Link>
         </li>
         <li>
-          <Link to="/harvests" aria-current="page">
-            Harvests
-          </Link>
+          <Link to="/harvests">Harvests</Link>
         </li>
         <li>
-          <Link to="/">Processing</Link>
+          <Link to="/processing">Processing</Link>
         </li>
         <li>
-          <Link to="/">Fermentations</Link>
+          <Link to="/fermentations">Fermentations</Link>
         </li>
         <li>
-          <Link to="/">Tanks</Link>
+          <Link to="/tanks">Tanks</Link>
         </li>
         <li>
-          <Link to="/">Inventory</Link>
+          <Link to="/inventory">Inventory</Link>
         </li>
       </ul>
     </nav>

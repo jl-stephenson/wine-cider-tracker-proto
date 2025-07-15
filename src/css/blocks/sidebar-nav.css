@@ -24,7 +24,8 @@
   color: var(--color-primary-shade);
 }
 
-.sidebar-nav a:not(:hover):not([aria-current="page"]) {
+.sidebar-nav a:not(:hover):not([aria-current="page"]),
+.sidebar-nav [data-status]:not(:hover):not([aria-current="page"]) {
   text-decoration: none;
 }
 
