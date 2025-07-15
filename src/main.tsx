@@ -9,6 +9,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { routeTree } from "./routeTree.gen";
 import "./css/global.css";
 
+async function enableMocking() {
+  const { worker } = await import("@/mocks/browser");
+
+  return worker.start();
+}
+
 export const queryClient = new QueryClient();
 
 export const router = createRouter({
@@ -36,11 +42,13 @@ declare module "@tanstack/react-router" {
 const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
   const root = createRoot(rootElement);
-  root.render(
-    <StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} defaultPreload="intent" />
-      </QueryClientProvider>
-    </StrictMode>,
+  await enableMocking().then(() =>
+    root.render(
+      <StrictMode>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} defaultPreload="intent" />
+        </QueryClientProvider>
+      </StrictMode>,
+    ),
   );
 }
