@@ -20,8 +20,17 @@
   top: 1rem;
 }
 
-.sidebar-nav svg {
+.sidebar__logo svg {
   color: var(--color-primary-shade);
+}
+
+.sidebar__logo:focus-visible {
+  outline: none;
+}
+
+.sidebar__logo:focus-visible svg {
+  outline: 2px solid var(--focus-color, currentColor);
+  outline-offset: var(--focus-offset, 0.2lh);
 }
 
 .sidebar-nav a:not(:hover):not([aria-current="page"]),
