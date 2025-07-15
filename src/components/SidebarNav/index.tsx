@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useEventListener } from "usehooks-ts";
 import { LogoIcon } from "../icons/LogoIcon";
+import { Link } from "@tanstack/react-router";
 
 type SidebarNavProps = {
   isSidebarOpen: boolean;
@@ -33,40 +34,39 @@ export function SidebarNav({ isSidebarOpen, toggleSidebar }: SidebarNavProps) {
       <ul role="list" className="flow">
         {isSidebarOpen ? (
           <li>
-            <a href="/" ref={firstLinkRef}>
+            <Link to="/" ref={firstLinkRef}>
               Home
-            </a>
+            </Link>
           </li>
         ) : (
           <li>
-            {" "}
-            <a href="/" className="sidebar__logo" aria-label="Home">
+            <Link to="/" className="sidebar__logo" aria-label="Home">
               <LogoIcon />
-            </a>
+            </Link>
           </li>
         )}
         <li>
-          <a href="#">Orchards</a>
+          <Link to="/">Orchards</Link>
         </li>
         <li>
-          <a href="#">Fruits</a>
+          <Link to="/">Fruits</Link>
         </li>
         <li>
-          <a href="#" aria-current="page">
+          <Link to="/harvests" aria-current="page">
             Harvests
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">Processing</a>
+          <Link to="/">Processing</Link>
         </li>
         <li>
-          <a href="#">Fermentations</a>
+          <Link to="/">Fermentations</Link>
         </li>
         <li>
-          <a href="#">Tanks</a>
+          <Link to="/">Tanks</Link>
         </li>
         <li>
-          <a href="#">Inventory</a>
+          <Link to="/">Inventory</Link>
         </li>
       </ul>
     </nav>
