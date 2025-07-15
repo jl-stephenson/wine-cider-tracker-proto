@@ -39,7 +39,7 @@ export function SidebarNav({
     ["/processing", "Processing"],
     ["/fermentations", "Fermentations"],
     ["/tanks", "Tanks"],
-    ["inventory", "Inventory"],
+    ["/inventory", "Inventory"],
   ];
 
   return (
