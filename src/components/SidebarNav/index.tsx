@@ -5,11 +5,16 @@ import { Link } from "@tanstack/react-router";
 
 type SidebarNavProps = {
   isSidebarOpen: boolean;
+  isDesktop: boolean;
   toggleSidebar: () => void;
 };
 
-export function SidebarNav({ isSidebarOpen, toggleSidebar }: SidebarNavProps) {
-  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+export function SidebarNav({
+  isSidebarOpen,
+  isDesktop,
+  toggleSidebar,
+}: SidebarNavProps) {
+  const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
 
   useEffect(() => {
     if (isSidebarOpen && firstLinkRef.current) {
@@ -23,6 +28,20 @@ export function SidebarNav({ isSidebarOpen, toggleSidebar }: SidebarNavProps) {
     }
   });
 
+  function handleClick() {
+    if (!isDesktop) toggleSidebar();
+  }
+
+  const navLinks = [
+    ["/farms", "Farms"],
+    ["/fruits", "Fruits"],
+    ["/harvests", "Harvests"],
+    ["/processing", "Processing"],
+    ["/fermentations", "Fermentations"],
+    ["/tanks", "Tanks"],
+    ["inventory", "Inventory"],
+  ];
+
   return (
     <nav
       id="sidebar"
@@ -34,38 +53,29 @@ export function SidebarNav({ isSidebarOpen, toggleSidebar }: SidebarNavProps) {
       <ul role="list" className="flow">
         {isSidebarOpen ? (
           <li>
-            <Link to="/" ref={firstLinkRef}>
+            <Link to="/" ref={firstLinkRef} onClick={handleClick}>
               Home
             </Link>
           </li>
         ) : (
           <li>
-            <Link to="/" className="sidebar__logo" aria-label="Home">
+            <Link
+              to="/"
+              className="sidebar__logo"
+              aria-label="Home"
+              onClick={handleClick}
+            >
               <LogoIcon />
             </Link>
           </li>
         )}
-        <li>
-          <Link to="/farms">Orchards</Link>
-        </li>
-        <li>
-          <Link to="/fruits">Fruits</Link>
-        </li>
-        <li>
-          <Link to="/harvests">Harvests</Link>
-        </li>
-        <li>
-          <Link to="/processing">Processing</Link>
-        </li>
-        <li>
-          <Link to="/fermentations">Fermentations</Link>
-        </li>
-        <li>
-          <Link to="/tanks">Tanks</Link>
-        </li>
-        <li>
-          <Link to="/inventory">Inventory</Link>
-        </li>
+        {navLinks.map(([to, label]) => (
+          <li key={to}>
+            <Link to={to} onClick={handleClick}>
+              {label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

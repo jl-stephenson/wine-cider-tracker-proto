@@ -24,7 +24,7 @@ function RootComponent() {
 
   return (
     <div className="grid" data-layout="dashboard">
-      <SidebarNav isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <SidebarNav isSidebarOpen={isSidebarOpen} isDesktop={isDesktop} toggleSidebar={toggleSidebar} />
       <SiteHeader isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <Outlet />
     </div>
