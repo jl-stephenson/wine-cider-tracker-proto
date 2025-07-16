@@ -2,7 +2,7 @@ import { http, HttpResponse } from "msw";
 import { db } from "./db";
 
 export const handlers = [
-  http.get("https://vintage-tracker.com/farms", ({ request }) => {
+  http.get("/api/farms", ({ request }) => {
     const url = new URL(request.url);
     const farmId = url.searchParams.get("id");
 
