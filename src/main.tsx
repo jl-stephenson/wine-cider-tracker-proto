@@ -10,9 +10,13 @@ import { routeTree } from "./routeTree.gen";
 import "./css/global.css";
 
 async function enableMocking() {
-  const { worker } = await import("@/mocks/browser");
-
-  return worker.start();
+  if (
+    process.env.NODE_ENV !== "production" ||
+    process.env.VERCEL_ENV === "preview"
+  ) {
+    const { worker } = await import("@/mocks/browser");
+    return worker.start();
+  }
 }
 
 export const queryClient = new QueryClient();
