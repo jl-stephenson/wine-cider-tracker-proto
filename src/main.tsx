@@ -9,6 +9,16 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { routeTree } from "./routeTree.gen";
 import "./css/global.css";
 
+async function enableMocking() {
+  if (
+    process.env.NODE_ENV !== "production" ||
+    process.env.VERCEL_ENV === "preview"
+  ) {
+    const { worker } = await import("@/mocks/browser");
+    return worker.start();
+  }
+}
+
 export const queryClient = new QueryClient();
 
 export const router = createRouter({
@@ -36,6 +46,7 @@ declare module "@tanstack/react-router" {
 const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
   const root = createRoot(rootElement);
+  await enableMocking();
   root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>

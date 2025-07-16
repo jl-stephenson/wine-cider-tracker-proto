@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@mswjs/data": "^0.16.2",
     "@tanstack/router-plugin": "^1.127.8",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -48,5 +49,10 @@
     "vite": "^6.3.5",
     "vite-plugin-compression": "^0.5.1",
     "vitest": "^3.2.2"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
