@@ -11,7 +11,7 @@ export const Route = createFileRoute("/farms")({
 
 function RouteComponent() {
   const farmsQuery = useSuspenseQuery(farmsQueryOptions());
-  const farms = farmsQuery.data.mockFarms;
+  const farms = farmsQuery.data.farms;
 
   console.log(farms);
 
@@ -24,7 +24,9 @@ function RouteComponent() {
         <div className="panel__content">
           <ul>
             {farms.map((farm: Farm) => (
-              <li key={farm.id}>{farm.name} - {farm.size} ha</li>
+              <li key={farm.id}>
+                {farm.name} - {farm.size} ha
+              </li>
             ))}
           </ul>
         </div>

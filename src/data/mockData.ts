@@ -11,4 +11,10 @@ export const mockFarms = [
     size: 0.5,
     created_at: new Date(2023, 3, 24),
   },
+  {
+    id: "farm_3",
+    name: "Valley Orchard",
+    size: 3,
+    created_at: new Date(2023, 5, 1),
+  },
 ];
