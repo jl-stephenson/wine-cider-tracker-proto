@@ -1,9 +1,9 @@
 import { farmsQueryOptions } from "@/utils/queryOptions";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import type { Farm } from "@/schemas/Farm";
 
-export const Route = createFileRoute("/farms")({
+export const Route = createFileRoute("/farms/")({
   loader: (opts) =>
     opts.context.queryClient.ensureQueryData(farmsQueryOptions()),
   component: RouteComponent,
@@ -12,8 +12,6 @@ export const Route = createFileRoute("/farms")({
 function RouteComponent() {
   const farmsQuery = useSuspenseQuery(farmsQueryOptions());
   const farms = farmsQuery.data.farms;
-
-  console.log(farms);
 
   return (
     <main className="flow" data-layout-area="content">
@@ -25,7 +23,9 @@ function RouteComponent() {
           <ul>
             {farms.map((farm: Farm) => (
               <li key={farm.id}>
+                <Link to="/farms/$farmId" params={{farmId: farm.id}}>
                 {farm.name} - {farm.size} ha
+                </Link>
               </li>
             ))}
           </ul>

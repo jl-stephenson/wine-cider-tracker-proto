@@ -42,13 +42,12 @@ declare module "@tanstack/react-router" {
 const rootElement = document.getElementById("root")!;
 if (!rootElement.innerHTML) {
   const root = createRoot(rootElement);
-  await enableMocking().then(() =>
-    root.render(
-      <StrictMode>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} defaultPreload="intent" />
-        </QueryClientProvider>
-      </StrictMode>,
-    ),
+  await enableMocking();
+  root.render(
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} defaultPreload="intent" />
+      </QueryClientProvider>
+    </StrictMode>,
   );
 }
