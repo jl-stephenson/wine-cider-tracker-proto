@@ -1,6 +1,6 @@
 import { queryOptions } from "@tanstack/react-query";
 import { getSupabaseClient } from "@/utils/getSupabaseClient";
-import { fetchFarmById, fetchFarms } from "./fetchFunctions";
+import { fetchCultivationsForFarm, fetchFarms } from "./fetchFunctions";
 
 const client = getSupabaseClient()
 
@@ -15,6 +15,6 @@ export function farmQueryOptions(farmId: string) {
     
 return queryOptions({
     queryKey: ["farms", farmId],
-    queryFn: () => fetchFarmById(client, farmId),
+    queryFn: () => fetchCultivationsForFarm(client, farmId),
 })
 }
