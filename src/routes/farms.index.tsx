@@ -11,7 +11,9 @@ export const Route = createFileRoute("/farms/")({
 
 function RouteComponent() {
   const farmsQuery = useSuspenseQuery(farmsQueryOptions());
-  const farms = farmsQuery.data.farms;
+  const farms = farmsQuery.data.data;
+
+  console.log(farms);
 
   return (
     <main className="flow" data-layout-area="content">

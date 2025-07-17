@@ -1,9 +1,14 @@
-export async function fetchFarms() {
-  const response = await fetch("/api/farms");
-  return await response.json();
+import { SupabaseClient } from "@supabase/supabase-js";
+
+export async function fetchFarms(client: SupabaseClient) {
+  return client.from("farms").select().throwOnError();
 }
 
-export async function fetchFarmById(id: string) {
-const response = await fetch(`/api/farms?id=${id}`);
-return await response.json();
+export async function fetchFarmById(client: SupabaseClient, farmId: string) {
+  return client
+    .from("cultivations")
+    .select("*")
+    .eq("farm_id", farmId)
+    .throwOnError()
+    .single();
 }
