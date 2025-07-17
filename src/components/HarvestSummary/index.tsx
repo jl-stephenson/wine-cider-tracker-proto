@@ -18,7 +18,7 @@ export function HarvestSummary({ harvest }: HarvestSummaryProps) {
             <tr>
               <th>Variety</th>
               <th>Weight</th>
-              <th>Actions</th>
+              <th data-role="menu-button">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -26,7 +26,7 @@ export function HarvestSummary({ harvest }: HarvestSummaryProps) {
               <tr key={index}>
                 <td>{fruit.variety}</td>
                 <td>{fruit.weight} kg</td>
-                <td>
+                <td data-role="menu-button">
                  <ActionsMenuButton />
                 </td>
               </tr>

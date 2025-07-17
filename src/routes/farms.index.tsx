@@ -1,6 +1,7 @@
+import { FarmSummaryTable } from "@/components/FarmSummaryTable";
 import { farmsQueryOptions } from "@/utils/queryOptions";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/farms/")({
   loader: (opts) =>
@@ -12,7 +13,8 @@ function RouteComponent() {
   const farmsQuery = useSuspenseQuery(farmsQueryOptions());
   const farms = farmsQuery.data.data;
 
-  console.log(farms);
+  const vineyards = farms.filter((farm) => farm.category === "Vineyard");
+  const orchards = farms.filter((farm) => farm.category === "Orchard");
 
   return (
     <main className="flow" data-layout-area="content">
@@ -20,17 +22,8 @@ function RouteComponent() {
         <div className="panel__heading">
           <h2>Farms</h2>
         </div>
-        <div className="panel__content">
-          <ul>
-            {farms.map((farm) => (
-              <li key={farm.id}>
-                <Link to="/farms/$farmId" params={{farmId: farm.id}}>
-                {farm.name} - {farm.size} ha
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {vineyards && <FarmSummaryTable farms={vineyards} />}
+        {orchards && <FarmSummaryTable farms={orchards} />}
       </div>
     </main>
   );

@@ -1,0 +1,8 @@
+td[data-role="menu-button"] {
+    padding: 0;
+}
+
+td[data-role="menu-button"],
+th[data-role="menu-button"] {
+      max-width: 4rem;
+}

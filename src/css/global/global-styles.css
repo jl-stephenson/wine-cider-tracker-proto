@@ -121,15 +121,6 @@ tr + tr :is(th, td) {
   border-block-start: var(--stroke);
 }
 
-td:last-child {
-  padding: 0;
-}
-
-th:last-child,
-td:last-child {
-  max-width: 4rem;
-}
-
 caption {
   margin-block-end: var(--space-s);
 }
