@@ -14,7 +14,7 @@ export const Route = createFileRoute("/farms/$farmId")({
 function RouteComponent() {
   const params = Route.useParams();
   const farmQuery = useSuspenseQuery(farmQueryOptions(params.farmId));
-  const farm = farmQuery.data.farm;
+  const farm = farmQuery.data.data;
 
   console.log(farm);
 
@@ -28,8 +28,8 @@ function RouteComponent() {
           <h3>Fruits:</h3>
           <ul>
             {farm.fruits.map((fruit: Fruit) => (
-              <li key={fruit.id}>
-                {fruit.type}: {fruit.variety}
+              <li key={fruit.variety}>
+                {fruit.variety} - {fruit.category}
               </li>
             ))}
           </ul>
