@@ -1,6 +1,12 @@
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
+let client: SupabaseClient;
+
 export function getSupabaseClient() {
+if (client) {
+  return client;
+}
+
   const url = import.meta.env.VITE_SUPABASE_URL;
   const apiKey = import.meta.env.VITE_SUPABASE_API_KEY;
 
@@ -8,7 +14,7 @@ export function getSupabaseClient() {
     throw new Error("Missing required Supabase environment variables");
   }
 
-  const client: SupabaseClient = createClient(url, apiKey);
+  client = createClient(url, apiKey);
 
   return client;
 }
