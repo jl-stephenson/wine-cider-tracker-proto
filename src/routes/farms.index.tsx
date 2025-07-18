@@ -22,8 +22,8 @@ function RouteComponent() {
         <div className="panel__heading">
           <h2>Farms</h2>
         </div>
-        {vineyards && <FarmSummaryTable farms={vineyards} />}
-        {orchards && <FarmSummaryTable farms={orchards} />}
+        {vineyards.length > 0 && <FarmSummaryTable farms={vineyards} />}
+        {orchards.length > 0 && <FarmSummaryTable farms={orchards} />}
       </div>
     </main>
   );
